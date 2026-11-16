@@ -1,0 +1,19 @@
+@import "tailwindcss";
+/* TODO: replace with exact values from Figma Dev Mode */
+@theme {
+  --color-page: #F3F0FC;
+  --color-surface: #FFFFFF;
+  --color-border: #E4DEF7;
+  --color-brand: #5B2DBE;
+  --color-brand-deep: #2E1470;
+  --color-ink: #1E1145;
+  --color-grow3dge: #6D4AD0;
+  --color-siher: #C2358F;
+  --color-wellbeing: #2AA198;
+  --color-explorer: #7A6FA8;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+body { background: var(--color-page); color: var(--color-ink); }
+.bg-navbar { background: linear-gradient(90deg,#7A45DC,#4F2BBE); }
+.bg-sidebar { background: linear-gradient(180deg,#A054F5,#4A25B5); }
+.bg-card-deep { background: linear-gradient(135deg,#2E1470,#5B2DBE); }
