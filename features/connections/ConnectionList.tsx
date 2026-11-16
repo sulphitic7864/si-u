@@ -16,7 +16,8 @@ export function ConnectionList() {
         <div className="flex items-center gap-3"><Avatar name={r.name} /><div className="flex-1"><b>{r.name}</b><p className="text-xs">{r.role}</p></div>
           <Button>Accept</Button><Button variant="ghost" onClick={() => setHidden(h => [...h, r.name])}>Decline</Button></div>
         <p className="mt-2 rounded-lg bg-page p-3 text-sm">{r.note}</p><p className="mt-1 text-xs text-ink/60">You were both in {r.session}</p></div>)
-        : <p className="text-sm text-ink/60">Requests expire after 30 days. You’ll only hear back if someone accepts.</p>}
+        
+        : <SentList />}
       <p className="mt-2 text-xs text-ink/50">Declining is silent — they’re never told.</p></Card>
     <h2 className="font-mono text-xs tracking-widest">PEOPLE YOU MET THIS WEEK</h2>
     <div className="grid gap-3 md:grid-cols-2">{met.map(m => <Card key={m.name}><div className="flex items-center gap-3"><Avatar name={m.name} /><b>{m.name}</b></div><p className="mt-2 text-xs">{m.ctx}</p>
@@ -37,4 +38,26 @@ function FilterDrawer({ onClose }: { onClose: () => void }) {
       {pick("MESSAGING", ["Any", "Can message", "DMs off"])}
       {pick("CONNECTED", ["Any time", "Last 7 days", "Last 30 days", "Last 3 months"])}
       <div className="flex gap-2"><Button variant="ghost" onClick={onClose}>Cancel</Button><Button className="flex-1" onClick={onClose}>Show people</Button></div></div></div>);
+}
+
+const sentInit = [
+  { name: "Amber Cardera", note: "You mentioned rebuilding your activation email in the Q&A — would love to compare notes.", status: "Waiting" },
+  { name: "Sandy Martinez", note: "Your point about pricing before product-market fit reframed the whole thing for me.", status: "Expires in 5 days" },
+  { name: "James Ko", note: "", status: "No response" },
+];
+function SentList() {
+  const [rows, setRows] = useState(sentInit);
+  const [confirm, setConfirm] = useState<string | null>(null);
+  const [undo, setUndo] = useState<typeof sentInit[number] | null>(null);
+  if (!rows.length) return (<div className="py-10 text-center"><b>No requests out yet</b>
+    <p className="mx-auto mt-1 max-w-xs text-sm text-ink/60">Connecting works best while the session is still fresh in both your heads.</p><div className="mt-4"><Button>See who you met</Button></div></div>);
+  return (<div>
+    {undo && <p className="mb-2 flex justify-between rounded-lg bg-page p-3 text-sm">Request to {undo.name} withdrawn.<button className="text-brand" onClick={() => { setRows(r => [...r, undo]); setUndo(null); }}>Undo</button></p>}
+    {rows.map(r => <div key={r.name} className="border-t border-border py-3"><div className="flex items-center gap-3"><Avatar name={r.name} />
+      <div className="flex-1"><b>{r.name}</b><p className="text-xs text-ink/60">{r.status}</p></div>
+      {r.status === "No response" ? <Button>Send again</Button> : <Button variant="ghost" onClick={() => setConfirm(r.name)}>Withdraw</Button>}</div>
+      {r.note && <p className="mt-2 rounded-lg bg-page p-3 text-sm">{r.note}</p>}
+      {confirm === r.name && <div className="mt-2 rounded-xl border border-border p-3 text-sm">{r.name} is never told you sent this — or that you took it back. <b>You won’t be able to request again for 30 days.</b>
+        <div className="mt-2 flex gap-2"><Button variant="ghost" onClick={() => setConfirm(null)}>Keep it</Button><Button onClick={() => { setRows(x => x.filter(y => y.name !== r.name)); setUndo(r); setConfirm(null); }}>Withdraw</Button></div></div>}</div>)}
+    <p className="mt-2 text-xs text-ink/50">You’ll only hear back if someone accepts. Requests expire after 30 days.</p></div>);
 }
