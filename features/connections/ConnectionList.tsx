@@ -4,12 +4,15 @@ import { Card, Avatar, Button, Chip } from "@/shared/components/ui";
 import { connections, requests, met } from "@/shared/data/mock";
 export function ConnectionList() {
   const [q, setQ] = useState(""); const [tab, setTab] = useState<"received" | "sent">("received");
-  const [f, setF] = useState(false); const [hidden, setHidden] = useState<string[]>([]);
-  const list = connections.filter(c => (c.name + c.handle + c.role).toLowerCase().includes(q.toLowerCase()));
+  const [f, setF] = useState(false); const [seg, setSeg] = useState("All"); const [fl, setFl] = useState<Filters>({ programs: [], messaging: "Any" }); const [hidden, setHidden] = useState<string[]>([]);
+  const list = connections.filter(c => (c.name + c.handle + c.role).toLowerCase().includes(q.toLowerCase())
+    && (seg === "All" || (seg === "Guides" ? c.guide : seg === "Explorers" ? !c.guide : c.live))
+    && (!fl.programs.length || fl.programs.includes(c.program))
+    && (fl.messaging === "Any" || (fl.messaging === "Can message" ? c.dms : !c.dms)));
   return (<div className="space-y-5">
     <div className="flex gap-2"><input value={q} onChange={e => setQ(e.target.value)} placeholder="Search your connections by name, handle or role" className="flex-1 rounded-xl border border-border px-4 py-2 text-sm" /><Button variant="ghost" onClick={() => setF(true)}>Filters</Button></div>
-    {f && <FilterDrawer onClose={() => setF(false)} />}
-    <div className="flex gap-2"><Chip active>All 1,140</Chip><Chip>Guides 48</Chip><Chip>Explorers 1,092</Chip><Chip>Online now 12</Chip></div>
+    {f && <FilterDrawer value={fl} onApply={v => { setFl(v); setF(false); }} onClose={() => setF(false)} />}
+    <div className="flex gap-2">{["All", "Guides", "Explorers", "Online now"].map(x => <button key={x} onClick={() => setSeg(x)}><Chip active={seg === x}>{x}</Chip></button>)}</div>
     <Card><div className="mb-3 flex justify-between"><h2 className="font-mono text-xs tracking-widest">REQUESTS · {requests.length}</h2>
       <div className="flex gap-1">{(["received", "sent"] as const).map(t => <button key={t} onClick={() => setTab(t)} className={`rounded-full px-3 py-1 text-xs capitalize ${tab === t ? "bg-brand-deep text-white" : ""}`}>{t}</button>)}</div></div>
       {tab === "received" ? requests.filter(r => !hidden.includes(r.name)).map(r => <div key={r.name} className="border-t border-border py-3">
@@ -27,19 +30,19 @@ export function ConnectionList() {
       {c.live && <span className="text-xs text-red-500">Live now</span>}<Button variant="ghost">Message</Button></div>)}</Card></div>);
 }
 
-const pick = (title: string, items: string[]) => (<div><p className="mb-1 font-mono text-[10px] tracking-widest">{title}</p><div className="flex flex-wrap gap-2">{items.map(i => <label key={i} className="cursor-pointer rounded-full border border-border px-3 py-1 text-sm has-[:checked]:bg-brand-deep has-[:checked]:text-white"><input type="checkbox" className="sr-only" />{i}</label>)}</div></div>);
-function FilterDrawer({ onClose }: { onClose: () => void }) {
+type Filters = { programs: string[]; messaging: string };
+function FilterDrawer({ value, onApply, onClose }: { value: Filters; onApply: (v: Filters) => void; onClose: () => void }) {
+  const [v, setV] = useState(value);
+  const chip = (on: boolean, label: string, click: () => void) => <button key={label} onClick={click}><Chip active={on}>{label}</Chip></button>;
+  const tog = (x: string) => setV(o => ({ ...o, programs: o.programs.includes(x) ? o.programs.filter(y => y !== x) : [...o.programs, x] }));
   return (<div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 md:items-center" role="dialog" aria-modal>
     <div className="max-h-[85vh] w-full max-w-md space-y-5 overflow-auto rounded-t-2xl bg-white p-6 md:rounded-2xl">
-      <div className="flex justify-between"><b>Filters</b><button onClick={onClose}>Clear all</button></div>
-      {pick("SESSION", ["Tokenomics 101", "Leading Without Losing Yourself", "Mastering AI Automations"])}
-      {pick("PROGRAM", ["Grow3dge", "SI Her", "Well-Being", "Explorer"])}
-      {pick("HOW YOU MET", ["You were both in a session", "They led a session you attended", "Search or invite link"])}
-      {pick("MESSAGING", ["Any", "Can message", "DMs off"])}
-      {pick("CONNECTED", ["Any time", "Last 7 days", "Last 30 days", "Last 3 months"])}
-      <div className="flex gap-2"><Button variant="ghost" onClick={onClose}>Cancel</Button><Button className="flex-1" onClick={onClose}>Show people</Button></div></div></div>);
+      <div className="flex justify-between"><b>Filters</b><button onClick={() => setV({ programs: [], messaging: "Any" })}>Clear all</button></div>
+      <div><p className="mb-1 font-mono text-[10px] tracking-widest">PROGRAM</p><div className="flex flex-wrap gap-2">{["Grow3dge", "Si Her", "Well-Being", "Explorer"].map(x => chip(v.programs.includes(x), x, () => tog(x)))}</div></div>
+      <div><p className="mb-1 font-mono text-[10px] tracking-widest">MESSAGING</p><div className="flex gap-2">{["Any", "Can message", "DMs off"].map(x => chip(v.messaging === x, x, () => setV(o => ({ ...o, messaging: x }))))}</div></div>
+      <p className="text-xs text-ink/50">Session, How you met and Connected filters arrive with Phase 2 data.</p>
+      <div className="flex gap-2"><Button variant="ghost" onClick={onClose}>Cancel</Button><Button className="flex-1" onClick={() => onApply(v)}>Show people</Button></div></div></div>);
 }
-
 const sentInit = [
   { name: "Amber Cardera", note: "You mentioned rebuilding your activation email in the Q&A — would love to compare notes.", status: "Waiting" },
   { name: "Sandy Martinez", note: "Your point about pricing before product-market fit reframed the whole thing for me.", status: "Expires in 5 days" },

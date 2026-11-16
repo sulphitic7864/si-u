@@ -5,6 +5,7 @@ import { me, sessions } from "@/shared/data/mock";
 import { useState } from "react";
 import { Avatar, Card, Button } from "./ui";
 import { CalendarWidget } from "./CalendarWidget";
+import { BadgesWidget, SessionRow } from "./widgets";
 import { RsvpButton } from "./RsvpModal";
 
 const nav = [["Home", "/"], ["Profile", "/kara.siu"], ["Connections", "/connections"], ["Streams", "/streams"], ["Learn", "/learn"]] as const;
@@ -42,11 +43,8 @@ function RightRail() {
       <input placeholder="Search people, sessions, topics…" className="w-full rounded-xl border border-border px-4 py-2 text-sm" />
       <CalendarWidget /><p className="font-medium">Upcoming sessions</p>
       <Card className="space-y-3 p-3">{sessions.map(s =>
-        <div key={s.id} className="flex items-center justify-between text-sm"><div><b>{s.title}</b><br /><span className="text-xs">{s.host}</span></div>
-          {s.live ? <Button>Watch</Button> : <RsvpButton title={s.title} when="Thu Apr 2 · 10:00 PM" />}</div>)}</Card>
-      <div className="bg-card-deep rounded-2xl p-4 text-white"><p className="text-sm">Your Earned Badges</p>
-        <p className="mt-6 text-xs">Progress to next badge · 3 / 5 sessions</p>
-        <div className="mt-1 h-1.5 rounded bg-white/20"><div className="h-full w-3/5 rounded bg-white" /></div></div>
+        <SessionRow key={s.id} title={s.title} meta={s.host} action={s.live ? <Button>Watch</Button> : <RsvpButton title={s.title} when="Thu Apr 2 · 10:00 PM" />} />)}</Card>
+      <BadgesWidget />
     </aside>);
 }
 function MobileBar() {

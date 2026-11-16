@@ -7,9 +7,10 @@ export const sessions = [
   { id: 2, title: "How to Sell B2B in Web3", host: "Sandy Martinez", program: "Grow3dge" as Program, live: false, attending: 7 },
 ];
 export const connections = [
-  { name: "Zuza Zuber", handle: "zuza.siu", role: "Leadership Coach · Founder, Si Her", live: true },
-  { name: "Amber Cardera", handle: "amber.siu", role: "Product-Led Growth · Grow3dge", live: true },
-  { name: "Mira Okonkwo", handle: "mira.siu", role: "Community Ops · MoonDAO", live: false },
+  { name: "Zuza Zuber", handle: "zuza.siu", role: "Leadership Coach · Founder, Si Her", program: "Si Her" as Program, guide: true, live: true, dms: true },
+  { name: "Amber Cardera", handle: "amber.siu", role: "Product-Led Growth · Grow3dge", program: "Grow3dge" as Program, guide: false, live: true, dms: true },
+  { name: "Kara Howard", handle: "kara.siu", role: "Founder, SI U · Grow3dge", program: "Grow3dge" as Program, guide: true, live: false, dms: false },
+  { name: "Mira Okonkwo", handle: "mira.siu", role: "Community Ops · MoonDAO", program: "Well-Being" as Program, guide: false, live: false, dms: true },
 ];
 export const posts = [
   { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · 2h ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live.", reactions: { Support: 24, Insightful: 9, Connect: 2 } },
