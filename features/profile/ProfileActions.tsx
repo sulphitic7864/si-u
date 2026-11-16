@@ -3,9 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui";
 import { RsvpButton } from "@/shared/components/RsvpModal";
-
-export type Viewer = "owner" | "co-attendee" | "non-attendee" | "guest";
-export const viewers: Viewer[] = ["owner", "co-attendee", "non-attendee", "guest"];
+import type { Viewer } from "./types";
 
 /** Only co-attendees (shared >=1 completed session) may Connect or message. */
 export function ProfileActions({ viewer }: { viewer: Viewer }) {

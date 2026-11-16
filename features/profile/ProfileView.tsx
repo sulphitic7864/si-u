@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { profileSessions } from "@/shared/data/mock";
-import { ProfileActions, GuideNudge, Viewer } from "./ProfileActions";
+import { ProfileActions, GuideNudge } from "./ProfileActions";
 import { Card, Avatar, Button } from "@/shared/components/ui";
+import type { Viewer } from "./types";
 const tabs = ["overview", "sessions", "posts", "about"] as const;
 export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string; tab: string; viewer?: Viewer }) {
   const t = (tabs as readonly string[]).includes(tab) ? tab : "overview";
