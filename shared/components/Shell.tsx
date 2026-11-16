@@ -25,7 +25,7 @@ function Navbar() {
 }
 function Sidebar({ mobile = false }: { mobile?: boolean }) {
   return (
-    <aside className={mobile ? "bg-sidebar flex h-full w-[300px] flex-col overflow-auto p-7 text-white" : "bg-sidebar hidden w-[338px] shrink-0 flex-col p-7 text-white lg:flex"}>
+    <aside className={mobile ? "bg-sidebar flex h-full w-[290px] flex-col overflow-auto p-7 text-white" : "bg-sidebar hidden w-[290px] shrink-0 flex-col p-7 text-white lg:flex"}>
       <Avatar name={me.name} size={56} />
       <h2 className="mt-4 text-xl font-extrabold uppercase">{me.name}</h2>
       <p className="opacity-80">@{me.handle}</p><p className="text-sm opacity-80">{me.tagline}</p>
@@ -39,7 +39,7 @@ function Sidebar({ mobile = false }: { mobile?: boolean }) {
 }
 function RightRail() {
   return (
-    <aside className="hidden w-[400px] shrink-0 space-y-4 border-l border-border bg-white p-6 xl:block">
+    <aside className="hidden w-[290px] shrink-0 space-y-4 border-l border-border bg-white p-6 xl:block">
       <input placeholder="Search people, sessions, topics…" className="w-full rounded-xl border border-border px-4 py-2 text-sm" />
       <CalendarWidget /><p className="font-medium">Upcoming sessions</p>
       <Card className="space-y-3 p-3">{sessions.map(s =>
