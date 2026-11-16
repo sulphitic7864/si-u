@@ -12,8 +12,19 @@ export const connections = [
   { name: "Kara Howard", handle: "kara.siu", role: "Founder, SI U · Grow3dge", program: "Grow3dge" as Program, guide: true, live: false, dms: false },
   { name: "Mira Okonkwo", handle: "mira.siu", role: "Community Ops · MoonDAO", program: "Well-Being" as Program, guide: false, live: false, dms: true },
 ];
-export const posts = [
-  { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · 2h ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live.", reactions: { Support: 24, Insightful: 9, Connect: 2 } },
+export const posts: Array<{
+  id: number;
+  author: string;
+  tag: Program;
+  meta: string;
+  body: string;
+  reactions: Record<string, number>;
+  media?: "landscape" | "gallery";
+  mediaCount?: number;
+}> = [
+  { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · Grow3dge · 2h ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live. ✨", reactions: { Support: 24, Insightful: 9, Connect: 2, Save: 0 } },
+  { id: 2, author: "Lila Hernandez", tag: "Si Her", meta: "Ecosystem Growth · Well-Being · 2h ago", body: "At a Web3 conference, we can draw inspiration from the majestic mountains that tower above us, reaching for the clouds. They symbolize the enduring guardianship of innovation in our digital landscape…", reactions: { Support: 18, Insightful: 7, Connect: 3, Save: 0 }, media: "landscape" },
+  { id: 3, author: "Mira Okonkwo", tag: "Well-Being", meta: "Community Ops · 5h ago", body: "A few moments from our latest community gathering. Thanks to everyone who made the room feel like home.", reactions: { Support: 32, Insightful: 12, Connect: 4, Save: 1 }, media: "gallery", mediaCount: 4 },
 ];
 export const requests = [
   { name: "Lena Nguyen", role: "Leadership Coach · Founder, Si Her", note: "Your question about holding boundaries without going cold — I’ve been chewing on it since.", session: "Leading Without Losing Yourself" },
