@@ -9,7 +9,7 @@ import { BadgesWidget, SessionRow } from "./widgets";
 import { RsvpButton } from "./RsvpModal";
 
 const nav = [["Home", "/"], ["Profile", "/kara.siu"], ["Connections", "/connections"], ["Streams", "/streams"], ["Learn", "/learn"]] as const;
-const reserved = ["/connections", "/streams", "/learn"];
+const reserved = ["/connections", "/streams", "/learn", "/settings"];
 const isActive = (p: string, h: string) =>
   h === "/" ? p === "/" : h === "/kara.siu" ? p !== "/" && !reserved.some(r => p.startsWith(r)) : p.startsWith(h);
 
@@ -34,7 +34,7 @@ function Sidebar({ mobile = false }: { mobile?: boolean }) {
       <p className="flex justify-between"><span>Communities</span><span>{me.communities}</span></p>
       <p className="mt-6 text-xs tracking-widest opacity-70">EXPLORE</p>
       {["Communities", "Si Her Publisher", "Events"].map(x => <p key={x} className="py-2">{x}</p>)}
-      <div className="mt-auto space-y-2 opacity-90"><p>Settings</p><p>Logout</p></div>
+      <div className="mt-auto space-y-2 opacity-90"><Link href="/settings" className="block">Settings</Link><p>Logout</p></div>
     </aside>);
 }
 function RightRail() {
