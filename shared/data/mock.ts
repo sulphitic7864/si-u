@@ -3,8 +3,8 @@ export const programColor: Record<Program, string> = {
   Grow3dge: "text-grow3dge", "Si Her": "text-siher", "Well-Being": "text-wellbeing", Explorer: "text-explorer" };
 export const me = { name: "Julienne Cho", handle: "julienne.siu", tagline: "Emerging Tech Adoption Leader | Web3 Connector", members: 1156, communities: 44 };
 export const sessions = [
-  { id: 1, title: "Leading Without Losing Yourself", host: "Zuza Zuber", program: "Si Her" as Program, live: true, attending: 33 },
-  { id: 2, title: "How to Sell B2B in Web3", host: "Sandy Martinez", program: "Grow3dge" as Program, live: false, attending: 7 },
+  { id: 1, title: "Leading Without Losing Yourself", host: "Zuza Zuber", program: "Si Her" as Program, live: true, attending: 33, date: "2026-04-01", time: "10:00 PM" },
+  { id: 2, title: "How to Sell B2B in Web3", host: "Sandy Martinez", program: "Grow3dge" as Program, live: false, attending: 7, date: "2026-04-02", time: "10:00 PM" },
 ];
 export const connections = [
   { name: "Zuza Zuber", handle: "zuza.siu", role: "Leadership Coach · Founder, Si Her", program: "Si Her" as Program, guide: true, live: true, dms: true },
@@ -21,8 +21,9 @@ export const posts: Array<{
   reactions: Record<string, number>;
   media?: "landscape" | "gallery";
   mediaCount?: number;
+  avatar?: string;
 }> = [
-  { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · Grow3dge · 2h ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live. ✨", reactions: { Support: 24, Insightful: 9, Connect: 2, Save: 0 } },
+  { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · Grow3dge · 2h ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live. ✨", reactions: { Support: 24, Insightful: 9, Connect: 2, Save: 0 }, avatar: "/assets/Rectangle4.png" },
   { id: 2, author: "Lila Hernandez", tag: "Si Her", meta: "Ecosystem Growth · Well-Being · 2h ago", body: "At a Web3 conference, we can draw inspiration from the majestic mountains that tower above us, reaching for the clouds. They symbolize the enduring guardianship of innovation in our digital landscape…", reactions: { Support: 18, Insightful: 7, Connect: 3, Save: 0 }, media: "landscape" },
   { id: 3, author: "Mira Okonkwo", tag: "Well-Being", meta: "Community Ops · 5h ago", body: "A few moments from our latest community gathering. Thanks to everyone who made the room feel like home.", reactions: { Support: 32, Insightful: 12, Connect: 4, Save: 1 }, media: "gallery", mediaCount: 4 },
 ];
