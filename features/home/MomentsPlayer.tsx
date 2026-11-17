@@ -1,56 +1,77 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { RsvpButton } from "@/shared/components/RsvpModal";
 import { Avatar } from "@/shared/components/ui";
 
 const moments = [
-  { tag: "Well-Being", author: "Nina John", role: "Breathwork Guide", caption: "2-minute breath reset between meetings. Try it. #wellbeing #breath", session: "Breathwork for Focus", likes: 214, comments: [{ n: "Lola Kim", t: "This is exactly what I needed today!" }, { n: "Marc Lee", t: "Where can I get the slides from the session?" }] },
-  { tag: "Grow3dge", author: "Sandy Martinez", role: "Web3 Sales", caption: "One question that unlocks every B2B discovery call. #sales #web3", session: "How to Sell B2B in Web3", likes: 98, comments: [] },
+  { tag: "Well-Being", author: "Nina John", handle: "@Nina.Siu", role: "Emerging Tech Adoption Leader", caption: "2-minute breath reset between meetings. Try it.", hashtags: "#wellbeing  #breath", image: "/assets/image1945.png", session: "Breathwork for Focus", sessionDate: "22", likes: 24, commentCount: 6, comments: [{ n: "Lola Kim", t: "This is exactly what I needed today!" }, { n: "Marc Lee", t: "Where can I get the slides from the session?" }] },
+  { tag: "Grow3dge", author: "Sandy Martinez", handle: "@Sandy.Siu", role: "Web3 Sales", caption: "One question that unlocks every B2B discovery call.", hashtags: "#sales  #web3", image: "/assets/image1946.png", session: "How to Sell B2B in Web3", sessionDate: "24", likes: 98, commentCount: 0, comments: [] },
 ];
 export function MomentsPlayer() {
-  const [i, setI] = useState(0); const [open, setOpen] = useState(true);
+  const [i, setI] = useState(0); const [commentsOpen, setCommentsOpen] = useState(false);
   const [liked, setLiked] = useState<number[]>([]); const [saved, setSaved] = useState<number[]>([]);
   const m = moments[i]; const flip = (a: number[], set: (x: number[]) => void) => set(a.includes(i) ? a.filter(x => x !== i) : [...a, i]);
-  return (<div className="mx-auto flex max-w-[720px] items-start justify-center gap-4">
-    <div className="w-full max-w-[360px] shrink-0">
-      <div className="relative h-[560px] overflow-hidden rounded-2xl bg-gradient-to-b from-sky-200 via-lime-100 to-emerald-900 text-white shadow-lg">
-        <svg aria-hidden="true" viewBox="0 0 360 560" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full">
-          <defs><linearGradient id="moment-sky" x1="0" x2="0" y1="0" y2="1"><stop stopColor="#b6dfcf" /><stop offset=".58" stopColor="#77a971" /><stop offset="1" stopColor="#234b38" /></linearGradient></defs>
-          <rect width="360" height="560" fill="url(#moment-sky)" />
-          <circle cx="285" cy="96" r="44" fill="#fff3c4" opacity=".8" />
-          <path d="M0 260q80-65 160 0t200-8v308H0Z" fill="#849d58" />
-          <path d="M0 340q90-55 180 0t180-12v232H0Z" fill="#516b3d" />
-          <path d="M40 488h280l-24 16H64Z" fill="#d5ba82" opacity=".9" />
-          <g fill="none" stroke="#1b2420" strokeLinecap="round" strokeLinejoin="round" strokeWidth="17">
-            <path d="M184 171 169 111 145 77" />
-            <path d="M183 174 247 195" />
-            <path d="m184 170-17 84" />
-            <path d="m170 249-60 61-61 8" />
-            <path d="m170 249 63 65 75 4" />
-          </g>
-          <circle cx="188" cy="146" r="16" fill="#1b2420" />
-        </svg>
-        <span className="absolute left-3 top-3 rounded-full bg-black/35 px-3 py-1 text-xs">{m.tag}</span>
-        <div className="absolute right-3 top-1/3 flex flex-col gap-4 text-center text-xs drop-shadow">
-          <button aria-label="Like" onClick={() => flip(liked, setLiked)}><span className="text-xl">{liked.includes(i) ? "♥" : "♡"}</span><br />{m.likes + (liked.includes(i) ? 1 : 0)}</button>
-          <button aria-label="Comments" onClick={() => setOpen(o => !o)}><span className="text-xl">▢</span><br />{m.comments.length}</button>
-          <button aria-label="Share" className="text-xl">↗</button>
-          <button aria-label="Save" onClick={() => flip(saved, setSaved)} className="text-xl">{saved.includes(i) ? "▣" : "♧"}</button>
-          <button aria-label="Previous moment" disabled={i === 0} onClick={() => setI(i - 1)}>▲</button>
-          <button aria-label="Next moment" disabled={i === moments.length - 1} onClick={() => setI(i + 1)}>▼</button>
+  return (<div className="mx-auto flex w-full max-w-[720px] items-start justify-center gap-4">
+    <div className="relative w-full max-w-[328px] shrink-0">
+      <div className="relative h-[504px] overflow-hidden rounded-[14px] bg-slate-900 text-white shadow-lg">
+        <Image src={m.image} alt={`${m.author} sharing a moment`} fill sizes="(max-width: 640px) 100vw, 328px" className="object-cover" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/5" />
+        <span className="absolute left-3 top-3 rounded bg-[#74833b]/85 px-2.5 py-1 text-[10px]">{m.tag}</span>
+        <div className="absolute right-3 top-[35%] flex flex-col items-center gap-2 drop-shadow">
+          <button type="button" aria-label="Like" onClick={() => flip(liked, setLiked)} className="flex flex-col items-center gap-1 text-[9px]">
+            <Image src="/assets/icons/Group2147232344.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" />
+            {m.likes + (liked.includes(i) ? 1 : 0)}
+          </button>
+          <button type="button" aria-label="Comments" onClick={() => setCommentsOpen(open => !open)} className="flex flex-col items-center gap-1 text-[9px]">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-600/60">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+            </span>
+            {m.commentCount}
+          </button>
+          <button type="button" aria-label="Share" className="grid h-8 w-8 place-items-center rounded-full bg-slate-600/60">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15m-4 16-4-4 4-4m4-3v2a3 3 0 0 1-3 3H3" /></svg>
+          </button>
+          <button type="button" aria-label="Save" onClick={() => flip(saved, setSaved)} className="grid h-8 w-8 place-items-center rounded-full bg-slate-600/60">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill={saved.includes(i) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M6 4h12v17l-6-4-6 4V4Z" /></svg>
+          </button>
+          <button type="button" aria-label="More moment options" className="grid h-8 w-8 place-items-center rounded-full bg-slate-600/60">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><circle cx="5" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /></svg>
+          </button>
         </div>
-        <div className="absolute inset-x-0 bottom-0 space-y-2 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-4 pt-20">
-          <div className="flex items-center gap-2"><Avatar name={m.author} size={32} shape="rounded" /><div className="text-sm"><b>{m.author}</b><p className="text-xs opacity-80">{m.role}</p></div></div>
-          <p className="text-sm leading-5">{m.caption}</p>
+        <div className="absolute inset-x-0 bottom-0 space-y-1.5 bg-gradient-to-t from-black/80 via-black/25 to-transparent px-3 pb-3 pt-20">
+          <div className="flex items-center gap-2">
+            <Avatar name={m.author} size={38} shape="rounded" />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5"><b className="text-xs">{m.author}</b><span className="text-[8px] text-white/75">{m.handle}</span><button type="button" className="rounded-full border border-white/60 px-2 py-0.5 text-[8px]">Connect</button></div>
+              <p className="text-[9px] text-white/80">{m.role}</p>
+            </div>
+          </div>
+          <p className="text-[11px] leading-4">{m.caption}</p>
+          <p className="text-[9px] text-white/75">{m.hashtags}</p>
         </div>
       </div>
-      <div className="mt-3 flex items-center justify-between rounded-xl border border-border bg-white p-3 text-ink shadow-sm">
-        <div className="min-w-0 text-sm"><span className="text-xs text-ink/60">Next session</span><br /><b className="line-clamp-1">{m.session}</b></div>
-        <RsvpButton title={m.session} when="Next week" />
+      <div className="absolute -right-8 top-1/2 flex -translate-y-1/2 flex-col gap-2">
+        <button type="button" aria-label="Previous moment" disabled={i === 0} onClick={() => setI(i - 1)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-explorer shadow disabled:opacity-50">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3"><path d="m6 14 6-6 6 6" /></svg>
+        </button>
+        <button type="button" aria-label="Next moment" disabled={i === moments.length - 1} onClick={() => setI(i + 1)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-explorer shadow disabled:opacity-50">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3"><path d="m6 10 6 6 6-6" /></svg>
+        </button>
+      </div>
+      <div className="mt-2.5 flex items-center gap-2 rounded-xl bg-white p-2.5 text-ink shadow-sm">
+        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-[#5043ae] text-center text-white">
+          <span className="text-[7px] leading-3">April</span><b className="text-xs leading-3">{m.sessionDate}</b>
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-[9px] text-ink/60">Next Session by {m.author}</p>
+          <b className="block truncate text-xs text-brand-deep">{m.session}</b>
+        </div>
+        <RsvpButton title={m.session} when={`April ${m.sessionDate}`} label="• Attend →" density="compact" />
       </div>
     </div>
-    {open && <aside className="hidden w-64 space-y-4 rounded-2xl border border-border bg-white p-4 md:block">
-      <div className="flex items-center justify-between"><b>Comments</b><span className="text-xs text-ink/50">{m.comments.length}</span></div>
+    {commentsOpen && <aside className="hidden w-64 space-y-4 rounded-2xl border border-border bg-white p-4 md:block">
+      <div className="flex items-center justify-between"><b>Comments</b><span className="text-xs text-ink/50">{m.commentCount}</span></div>
       <div className="space-y-4">{m.comments.map(c => <p key={c.t} className="text-sm leading-5"><b>{c.n}</b><br /><span className="text-ink/70">{c.t}</span></p>)}</div>
       <input aria-label="Add a comment" placeholder="Add a comment…" className="w-full rounded-lg border border-border px-3 py-2 text-sm" />
     </aside>}

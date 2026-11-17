@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ReactNode, useState } from "react";
 import { Avatar, Card } from "./ui";
 import { Program } from "@/shared/data/mock";
@@ -15,7 +16,7 @@ export function EngagementBar({ reactions }: { reactions: R }) {
   const [mine, setMine] = useState<string | null>(null);
   return (<div className="mt-4 flex items-center gap-6 border-t border-border/70 pt-3 text-sm text-ink/60">{Object.entries(reactions).map(([k, v]) =>
     <button key={k} aria-label={`${k} post`} onClick={() => setMine(mine === k ? null : k)} className={`inline-flex items-center gap-2 transition-colors hover:text-brand ${mine === k ? "text-brand" : ""}`}>
-      <span aria-hidden="true" className="leading-none">{reactionIcons[k] ?? "♡"}</span><span>{v + (mine === k ? 1 : 0)}</span>
+      <span aria-hidden="true" className="leading-none">{k === "Support" ? <Image src="/assets/icons/Vector.png" alt="" width={20} height={20} className={iconClass} /> : reactionIcons[k] ?? "♡"}</span><span>{v + (mine === k ? 1 : 0)}</span>
     </button>)}</div>);
 }
 export function PostCard({ author, avatar, tag, meta, body, reactions, children }: { author: string; avatar?: string; tag?: Program; meta: string; body: string; reactions: R; children?: ReactNode }) {
