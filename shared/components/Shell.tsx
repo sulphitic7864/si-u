@@ -69,9 +69,8 @@ function Sidebar({ mobile = false }: { mobile?: boolean }) {
   return (
     <aside className={sidebarClass}>
       <div className="relative mb-7">
-        <div className="relative h-[86px] overflow-hidden rounded-xl bg-[linear-gradient(125deg,#f49a49_0%,#ec78bb_36%,#873fe1_68%,#2d8be2_100%)]">
-          <div className="absolute -bottom-12 left-[-10%] h-24 w-[120%] -rotate-6 rounded-[50%] bg-cyan-400/90" />
-          <div className="absolute -bottom-16 left-[35%] h-28 w-[90%] rotate-6 rounded-[50%] bg-blue-700/70" />
+        <div className="relative h-[86px] overflow-hidden rounded-xl">
+          <Image src="/assets/Maskgroup.png" alt="" fill sizes="250px" className="object-cover" />
         </div>
         <div className="absolute -bottom-5 left-3 rounded-xl border-2 border-white/80 bg-white/20 p-1">
           <Avatar name={me.name} size={44} shape="rounded" src="/assets/Ava.png" />
