@@ -20,7 +20,7 @@ export function ProfileActions({ viewer }: { viewer: Viewer }) {
 export function GuideNudge() {
   const [shown, setShown] = useState(true);
   if (!shown) return null;
-  return (<div className="flex items-center justify-between rounded-2xl border border-brand/30 bg-white p-4">
-    <div><b>Two things left before you can apply as a Guide</b><p className="text-sm text-ink/70">Add your values and one contribution.</p></div>
-    <div className="flex items-center gap-2"><Button variant="ghost">Complete profile</Button><button aria-label="Dismiss" onClick={() => setShown(false)}>✕</button></div></div>);
+  return (<div className="flex items-center justify-between gap-3 rounded-2xl border border-brand/30 bg-white px-5 py-3">
+    <div><b className="text-xs">Two things left before you can apply as a Guide</b><p className="text-[10px] text-ink/70">Add your values and one contribution.</p></div>
+    <div className="flex shrink-0 items-center gap-2"><Button variant="ghost">Complete profile</Button><button aria-label="Dismiss" onClick={() => setShown(false)} className="text-xs">✕</button></div></div>);
 }
