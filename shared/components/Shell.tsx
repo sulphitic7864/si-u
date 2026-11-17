@@ -2,12 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { me, sessions } from "@/shared/data/mock";
+import { me } from "@/shared/data/mock";
 import { useState } from "react";
-import { Avatar, Card, Button } from "./ui";
+import { Avatar } from "./ui";
 import { CalendarWidget } from "./CalendarWidget";
-import { BadgesWidget, SessionRow } from "./widgets";
-import { RsvpButton } from "./RsvpModal";
+import { BadgesWidget } from "./widgets";
 
 const nav = [
   ["Home", "/", "home"],
@@ -111,12 +110,14 @@ function Sidebar({ mobile = false }: { mobile?: boolean }) {
 function RightRail() {
   return (
     <aside className="hidden w-[290px] shrink-0 space-y-4 border-l border-border bg-white p-4 xl:block">
-      <label className="flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-sm text-ink/45">
-        <span aria-hidden="true">⌕</span><input aria-label="Search people, sessions, topics" placeholder="Search people, sessions, topics…" className="min-w-0 flex-1 outline-none" />
-      </label>
-      <CalendarWidget /><p className="font-medium">Upcoming sessions</p>
-      <Card className="space-y-3 p-3">{sessions.map(s =>
-        <SessionRow key={s.id} title={s.title} meta={s.host} action={s.live ? <Button>Watch</Button> : <RsvpButton title={s.title} when="Thu Apr 2 · 10:00 PM" />} />)}</Card>
+      <div className="-mx-4 -mt-4 mb-4 border-b border-border px-4 pb-4 pt-5">
+        <p className="mb-2 text-xs text-ink/60">Looking for something?</p>
+        <label className="flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-sm text-ink/55">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="h-4 w-4 shrink-0"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 5 5" /></svg>
+          <input aria-label="Search people, sessions, topics" placeholder="Search people, sessions, topics…" className="min-w-0 flex-1 outline-none" />
+        </label>
+      </div>
+      <CalendarWidget />
       <BadgesWidget />
     </aside>);
 }
