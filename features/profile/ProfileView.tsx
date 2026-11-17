@@ -17,7 +17,7 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
   const mediaPosts = posts.filter(post => post.media);
 
   return (
-    <div className="mx-auto max-w-[812px] space-y-4">
+    <div className="w-full space-y-4">
       <Card className="!overflow-hidden !p-0">
         <div className="relative h-[170px] bg-gradient-to-b from-[#9999ad] via-[#716482] to-[#32145f]">
           {viewer === "owner" && <button type="button" className="absolute bottom-3 right-4 rounded-md bg-black/50 px-3 py-1.5 text-xs text-white">Edit cover</button>}

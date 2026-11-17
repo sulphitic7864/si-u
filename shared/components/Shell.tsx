@@ -108,7 +108,7 @@ function Sidebar({ mobile = false }: { mobile?: boolean }) {
 }
 function RightRail() {
   return (
-    <aside className="hidden w-[290px] shrink-0 space-y-4 border-l border-border bg-white p-4 xl:block">
+    <aside className="hidden w-[290px] shrink-0 space-y-4 border-l border-border bg-white p-4 2xl:block">
       <div className="-mx-4 -mt-4 mb-4 border-b border-border px-4 pb-4 pt-5">
         <p className="mb-2 text-xs text-ink/60">Looking for something?</p>
         <label className="flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-sm text-ink/55">
@@ -149,8 +149,7 @@ function BottomTabBar() {
     </nav>);
 }
 export default function Shell({ children }: { children: React.ReactNode }) {
-  const isConnectionsPage = usePathname() === "/connections";
   return (<div className="min-h-screen"><Navbar /><MobileBar />
-    <div className="flex min-h-[calc(100vh-5rem)]"><Sidebar /><main className={`min-w-0 flex-1 bg-page p-4 pb-24 ${isConnectionsPage ? "lg:p-4" : "lg:p-8"}`}><div className={`mx-auto ${isConnectionsPage ? "max-w-[1040px]" : "max-w-[859px]"}`}>{children}</div></main><RightRail /></div>
+    <div className="flex min-h-[calc(100vh-5rem)]"><Sidebar /><main className="min-w-0 flex-1 bg-page p-4 pb-24 lg:pb-4"><div className="w-full">{children}</div></main><RightRail /></div>
     <BottomTabBar /></div>);
 }

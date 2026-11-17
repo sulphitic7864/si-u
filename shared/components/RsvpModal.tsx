@@ -6,7 +6,7 @@ const opts = [
   { title: "Add to Google Calendar", description: "Export directly to your Google account", icon: "google" },
   { title: "Add to Apple Calendar", description: "Export directly to your Apple account", icon: "apple" },
 ] as const;
-export function RsvpButton({ title, when, label = "Attend", density = "default" }: { title: string; when: string; label?: string; density?: "default" | "compact" }) {
+export function RsvpButton({ title, when, label = "Attend", density = "default", variant = "primary", className = "" }: { title: string; when: string; label?: string; density?: "default" | "compact"; variant?: "primary" | "ghost"; className?: string }) {
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -15,7 +15,7 @@ export function RsvpButton({ title, when, label = "Attend", density = "default" 
   return (<>
     {done
       ? <span className={`rounded-lg bg-brand/10 text-brand ${density === "compact" ? "px-3 py-1 text-[10px]" : "px-4 py-2 text-sm"}`}>✓ Attending</span>
-      : <Button density={density} onClick={() => setOpen(true)}>{label}</Button>}
+      : <Button density={density} variant={variant} className={className} onClick={() => setOpen(true)}>{label}</Button>}
     {open && <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog" aria-modal="true" aria-labelledby="schedule-session-title">
       <div className="w-full max-w-sm rounded-xl bg-white p-4 shadow-xl sm:p-5">
         <div className="mb-1 flex items-center justify-between">
