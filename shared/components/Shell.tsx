@@ -123,11 +123,19 @@ function RightRail() {
 function MobileBar() {
   const [open, setOpen] = useState(false);
   return (<>
-    <header className="bg-navbar sticky top-0 z-20 flex h-14 items-center justify-between px-4 text-white lg:hidden">
+    <header className="bg-navbar sticky top-0 z-20 flex h-[72px] items-center justify-between px-4 text-white lg:hidden">
       <Link href="/" aria-label="SI U home" className="flex items-center">
         <Image src="/assets/Logo.png" alt="SI U" width={70} height={25} priority />
       </Link>
-      <div className="flex gap-3"><button aria-label="Search">🔍</button><button aria-label="Menu" onClick={() => setOpen(true)}>☰</button></div></header>
+      <div className="flex gap-2">
+        <button type="button" aria-label="Search" className="grid h-9 w-9 place-items-center rounded-lg bg-white/10">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="h-4 w-4"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 5 5" /></svg>
+        </button>
+        <button type="button" aria-label="Menu" onClick={() => setOpen(true)} className="grid h-9 w-9 place-items-center rounded-lg bg-white/10">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="h-5 w-5"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </header>
     {open && <div className="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal>
       <Sidebar mobile /><button className="flex-1 bg-black/40" aria-label="Close menu" onClick={() => setOpen(false)} /></div>}
   </>);

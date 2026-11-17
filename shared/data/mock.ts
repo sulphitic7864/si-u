@@ -39,10 +39,27 @@ export const profileSessions = [
   { title: "How to Sell B2B in Web3", role: "ATTENDED", meta: "Grow3dge · 24 Mar 2026 · 64 attended" },
   { title: "Designing for Trust in Web3", role: "LED", meta: "Grow3dge · 12 Mar 2026 · 96 attended" },
 ];
-export const learnToday = [
-  { time: "10:00 AM", title: "SI Her DAO in 2026", host: "Zuza Zuber", program: "Si Her" as Program, n: 41, state: "live" },
-  { time: "6:00 PM", title: "Your First On-Chain Credential", host: "Sandy Martinez", program: "Explorer" as Program, n: 63, state: "attending" },
-  { time: "9:00 AM", title: "Focus Rituals for Deep Work", host: "Mira Okonkwo", program: "Well-Being" as Program, n: 12, state: "open" },
+export type LearnSession = {
+  time: string;
+  duration: string;
+  title: string;
+  description: string;
+  host: string;
+  program: Program;
+  n: number;
+  state: "live" | "attending" | "open";
+};
+export const learnToday: LearnSession[] = [
+  { time: "10:00 AM", duration: "1 hr", title: "SI Her DAO in 2026", description: "How to foster collaboration, trust and well-being in fast-moving Web3 ecosystems.", host: "Zuza Zuber", program: "Si Her", n: 41, state: "live" },
+  { time: "6:00 PM", duration: "45 min", title: "Your First On-Chain Credential", description: "Explore how on-chain credentials can make learning visible and portable.", host: "Sandy Martinez", program: "Explorer", n: 63, state: "attending" },
+];
+export const learnTomorrow: LearnSession[] = [
+  { time: "09:00 AM", duration: "1 hr", title: "Focus Rituals for Deep Work", description: "Build rituals for focus, energy and sustainable creative work.", host: "Mira Okonkwo", program: "Well-Being", n: 12, state: "open" },
+  { time: "10:00 AM", duration: "1 hr", title: "Community Engagement with MoonDAO", description: "Practical ways to welcome and support new contributors.", host: "Hana Howard", program: "Grow3dge", n: 18, state: "open" },
 ];
 export const replays = [{ t: "DeFi Fundamentals: A Deep Dive", p: "Grow3dge" as Program, d: "45 min" }, { t: "Building Resilience in Bear Markets", p: "Well-Being" as Program, d: "45 min" }, { t: "The Future of DAO Governance", p: "Explorer" as Program, d: "50 min" }];
-export const summaries = [{ t: "Tokenomics 101: Value Capture", p: "Grow3dge" as Program, pts: ["Supply mechanics determine long-term value", "Utility must raise speculation for sustainable growth"] }, { t: "Mental Health in High-Speed Environments", p: "Well-Being" as Program, pts: ["Burnout signals appear about 3 months before a crash", "Digital boundaries are essential for remote work health"] }];
+export const summaries = [
+  { t: "Tokenomics 101: Value Capture", p: "Grow3dge" as Program, pts: ["Supply mechanics determine long-term value", "Utility must raise speculation for sustainable growth", "Vesting schedules shape community trust"] },
+  { t: "Mental Health in High-Speed Environments", p: "Well-Being" as Program, pts: ["Burnout signals appear about 3 months before a crash", "Micro-breaks raise cognitive performance by 25%", "Digital boundaries are essential for remote work health"] },
+  { t: "Cross-Chain Interoperability", p: "Explorer" as Program, pts: ["Bridges remain the biggest security vulnerability in DeFi", "Layer 2 rollups are solving the fragmentation issue", "User experience is the key barrier to mass adoption"] },
+];
