@@ -6,11 +6,16 @@ export const sessions = [
   { id: 1, title: "Leading Without Losing Yourself", host: "Zuza Zuber", program: "Si Her" as Program, live: true, attending: 33, date: "2026-04-01", time: "10:00 PM" },
   { id: 2, title: "How to Sell B2B in Web3", host: "Sandy Martinez", program: "Grow3dge" as Program, live: false, attending: 7, date: "2026-04-02", time: "10:00 PM" },
 ];
+export const connectionStats = { total: 1140, guides: 48, explorers: 1092, online: 12, live: 3 };
 export const connections = [
-  { name: "Zuza Zuber", handle: "zuza.siu", role: "Leadership Coach · Founder, Si Her", program: "Si Her" as Program, guide: true, live: true, dms: true },
-  { name: "Amber Cardera", handle: "amber.siu", role: "Product-Led Growth · Grow3dge", program: "Grow3dge" as Program, guide: false, live: true, dms: true },
-  { name: "Kara Howard", handle: "kara.siu", role: "Founder, SI U · Grow3dge", program: "Grow3dge" as Program, guide: true, live: false, dms: false },
-  { name: "Mira Okonkwo", handle: "mira.siu", role: "Community Ops · MoonDAO", program: "Well-Being" as Program, guide: false, live: false, dms: true },
+  { name: "Zuza Zuber", handle: "zuza.siu", role: "Leadership Coach · Founder, Si Her", program: "Si Her" as Program, guide: true, live: true, presence: "live", dms: true },
+  { name: "Amber Cardera", handle: "amber.siu", role: "Product-Led Growth · Grow3dge", program: "Grow3dge" as Program, guide: false, live: true, presence: "live", dms: true },
+  { name: "Kara Howard", handle: "kara.siu", role: "Founder, SI U · Grow3dge", program: "Grow3dge" as Program, guide: true, live: false, presence: "offline", dms: false },
+  { name: "Mira Okonkwo", handle: "mira.siu", role: "Community Ops · MoonDAO", program: "Well-Being" as Program, guide: false, live: false, presence: "online", dms: true },
+  { name: "Sandy Martinez", handle: "sandy.siu", role: "Web3 Sales · Grow3dge", program: "Grow3dge" as Program, guide: true, live: false, presence: "online", dms: true },
+  { name: "Lila Hernandez", handle: "lila.siu", role: "Ecosystem Growth · Well-Being", program: "Well-Being" as Program, guide: false, live: false, presence: "offline", dms: true },
+  { name: "Priya Raman", handle: "priya.siu", role: "Protocol Research · Grow3dge", program: "Grow3dge" as Program, guide: false, live: false, presence: "offline", dms: true },
+  { name: "James Ko", handle: "jamesko.siu", role: "Product Lead · Stripe", program: "Grow3dge" as Program, guide: false, live: false, presence: "offline", dms: true },
 ];
 export const posts: Array<{
   id: number;
@@ -27,12 +32,14 @@ export const posts: Array<{
   { id: 2, author: "Lila Hernandez", tag: "Si Her", meta: "Ecosystem Growth · Well-Being · 2h ago", body: "At a Web3 conference, we can draw inspiration from the majestic mountains that tower above us, reaching for the clouds. They symbolize the enduring guardianship of innovation in our digital landscape…", reactions: { Support: 18, Insightful: 7, Connect: 3 }, media: "landscape", avatar: "/assets/Group2147232031.png" },
 ];
 export const requests = [
-  { name: "Lena Nguyen", role: "Leadership Coach · Founder, Si Her", note: "Your question about holding boundaries without going cold — I’ve been chewing on it since.", session: "Leading Without Losing Yourself" },
-  { name: "Priya Raman", role: "Protocol Research", note: "I was the one who asked the awkward question about token vesting at the end.", session: "Tokenomics 101" },
+  { name: "Lena Nguyen", role: "Leadership Coach · Founder, Si Her", badge: "Guide", connections: "2 shared connections", age: "2d ago", online: true, note: "Your question about holding boundaries without going cold — I’ve been chewing on it since. Would love to keep that conversation going.", session: "Leading Without Losing Yourself" },
+  { name: "Priya Raman", role: "Protocol Research", badge: "Explorer", connections: "No shared connections", age: "5d ago", online: false, note: "I was the one who asked the awkward question about token vesting at the end. Still thinking about your answer.", session: "Tokenomics 101" },
 ];
 export const met = [
-  { name: "Amber Cardera", ctx: "You both attended Mastering AI Automations", left: "5 days left" },
-  { name: "Zuza Zuber", ctx: "She led Leading Without Losing Yourself", left: "2 days left" },
+  { name: "Amber Cardera", role: "Product-Led Growth · Grow3dge", badge: "Explorer", activity: "attended", session: "Mastering AI Automations", day: "Tue", left: "5 days left", status: "away" },
+  { name: "Zuza Zuber", role: "Leadership Coach · Si Her", badge: "Guide", activity: "led", session: "Leading Without Losing Yourself", day: "Tue", left: "2 days left", status: "offline" },
+  { name: "Mira Okonkwo", role: "Community Ops · MoonDAO", badge: "Explorer", activity: "attended", session: "Focus Rituals for Deep Work", day: "Mon", left: "1 day left", status: "online" },
+  { name: "Sandy Martinez", role: "Web3 Sales · Grow3dge", badge: "Guide", activity: "led", session: "Your First On-Chain Credential", day: "Mon", left: "1 day left", status: "offline" },
 ];
 export const profileSessions = [
   { title: "Leading Without Losing Yourself", role: "LED", meta: "SI Her · 1 Apr 2026 · 128 attended" },

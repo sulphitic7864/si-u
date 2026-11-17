@@ -149,7 +149,8 @@ function BottomTabBar() {
     </nav>);
 }
 export default function Shell({ children }: { children: React.ReactNode }) {
+  const isConnectionsPage = usePathname() === "/connections";
   return (<div className="min-h-screen"><Navbar /><MobileBar />
-    <div className="flex min-h-[calc(100vh-5rem)]"><Sidebar /><main className="min-w-0 flex-1 bg-page p-4 pb-24 lg:p-8"><div className="mx-auto max-w-[859px]">{children}</div></main><RightRail /></div>
+    <div className="flex min-h-[calc(100vh-5rem)]"><Sidebar /><main className={`min-w-0 flex-1 bg-page p-4 pb-24 ${isConnectionsPage ? "lg:p-4" : "lg:p-8"}`}><div className={`mx-auto ${isConnectionsPage ? "max-w-[1040px]" : "max-w-[859px]"}`}>{children}</div></main><RightRail /></div>
     <BottomTabBar /></div>);
 }
