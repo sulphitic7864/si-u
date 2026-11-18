@@ -4,7 +4,7 @@ import { Feed } from "./Feed";
 import { MomentsPlayer } from "./MomentsPlayer";
 export function HomeView() {
   const [tab, setTab] = useState<"feed" | "moments">("feed");
-  return (<>
+  return (<div className="font-geist">
     <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
       <h1 className="whitespace-nowrap text-lg font-semibold text-ink">Welcome back, <span className="text-brand">julienne.siu</span> <span aria-hidden="true">👋</span></h1>
       <div className="flex flex-wrap items-center justify-end gap-2">
@@ -22,5 +22,5 @@ export function HomeView() {
       </div>
     </div>
     {tab === "feed" ? <Feed /> : <MomentsPlayer />}
-  </>);
+  </div>);
 }

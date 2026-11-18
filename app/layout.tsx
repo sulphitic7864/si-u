@@ -1,5 +1,9 @@
 import "./globals.css";
-export const metadata = { title: "SI U" };
+import { Geist } from "next/font/google";
+
+const geist = Geist({ subsets: ["latin"], variable: "--geist-sans" });
+
+export const metadata = { title: "SI U", icons: { icon: "/assets/Logo.png" } };
 export default function Root({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body className="font-sans antialiased">{children}</body></html>;
+  return <html lang="en"><body className={`${geist.variable} font-sans antialiased`}>{children}</body></html>;
 }

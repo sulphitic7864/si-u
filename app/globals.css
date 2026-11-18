@@ -11,6 +11,8 @@
   --color-siher: #C2358F;
   --color-wellbeing: #2AA198;
   --color-explorer: #7A6FA8;
+  --font-roobert: "Roobert Trial", "Roobert", var(--geist-sans), system-ui, sans-serif;
+  --font-geist: var(--geist-sans), system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 body { background: var(--color-page); color: var(--color-ink); }

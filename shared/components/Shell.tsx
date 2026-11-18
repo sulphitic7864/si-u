@@ -45,7 +45,7 @@ function Navbar() {
       <Link href="/" aria-label="SI U home" className="flex items-center">
         <Image src="/assets/Logo.png" alt="SI U" width={72} height={26} priority />
       </Link>
-      <nav className="flex items-center gap-2">{nav.map(([label, href, icon]) =>
+      <nav className="flex items-center gap-2 font-roobert">{nav.map(([label, href, icon]) =>
         <Link key={href} href={href} className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm transition-colors ${isActive(p, href) ? "bg-white/20" : "opacity-80 hover:bg-white/10"}`}>
           <NavIcon name={icon} />{label}
         </Link>)}</nav>
@@ -78,12 +78,12 @@ function Sidebar({ mobile = false }: { mobile?: boolean }) {
       </div>
       <h2 className="text-lg font-extrabold uppercase leading-tight">{me.name}</h2>
       <p className="text-sm opacity-80">@{me.handle}</p>
-      <p className="mt-2 text-sm leading-5 opacity-80">{me.tagline}</p>
+      <p className="mt-2 text-sm leading-5 opacity-80 font-roobert">{me.tagline}</p>
       <button className="mt-4 flex w-full items-center justify-between rounded-xl border border-white/30 bg-white/10 px-3 py-2 text-left text-xs">
         <span><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-white" />Claim your .siu name</span><span>→</span>
       </button>
 
-      <section className="mt-5 border-t border-white/15 pt-5">
+      <section className="mt-5 border-t border-white/15 pt-5 font-roobert">
         <h3 className="mb-2 text-[11px] font-semibold tracking-[0.16em] text-white/65">YOUR CONNECTIONS</h3>
         <Link href="/connections" className="flex items-center justify-between py-1.5 text-sm hover:text-white/80">
           <span>Members</span><span>{me.members.toLocaleString()} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-[10px]">+7</span></span>
