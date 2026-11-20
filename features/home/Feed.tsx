@@ -9,7 +9,7 @@ export function Feed() {
     <Card className="p-3">
       <div className="flex items-center gap-3">
         <Avatar name="Julienne Cho" size={40} shape="rounded" src="/assets/Ava.png" />
-        <input aria-label="Create a post" placeholder="What are you building, learning, or thinking about?" className="min-w-0 flex-1 rounded-xl border border-border bg-page/50 px-4 py-3 text-sm placeholder:text-ink/45 focus:border-brand focus:outline-none" />
+        <input aria-label="Create a post" placeholder="Share an update…" className="min-w-0 flex-1 rounded-xl border border-border bg-page/50 px-4 py-3 text-sm placeholder:text-ink/45 focus:border-brand focus:outline-none" />
       </div>
     </Card>
     {posts.map(post => <PostCard key={post.id} author={post.author} avatar={post.avatar} tag={post.tag} meta={post.meta} body={post.body} reactions={post.reactions}>

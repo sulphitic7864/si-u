@@ -35,13 +35,13 @@ export function StreamsView() {
 
   return (
     <div className="space-y-5">
-      <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:overflow-visible sm:px-0">
+      <div className="-mx-4 overflow-x-auto px-4 pb-1 scrollbar-hide sm:mx-0 sm:overflow-visible sm:px-0">
         <div className="flex w-max min-w-full gap-2 sm:w-auto sm:min-w-0">
           {filters.map(value => (
             <button key={value} type="button" aria-pressed={filter === value} onClick={() => {
               setFilter(value);
               setShowAllLive(false);
-            }} className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${filter === value ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-[#625a91] hover:border-brand/40"}`}>
+            }} className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${filter === value ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-[#625a91] hover:border-brand/40"}`}>
               {value}
             </button>
           ))}

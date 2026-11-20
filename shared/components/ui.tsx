@@ -13,4 +13,4 @@ export const Chip = ({ children, active }: { children: React.ReactNode; active?:
 export const ProgramTag = ({ program }: { program: Program }) =>
   <span className={`font-mono text-[10px] uppercase tracking-wider ${programColor[program]}`}>{program}</span>;
 export const PageHeader = ({ title, sub }: { title: string; sub?: string }) =>
-  <header className="mb-5"><h1 className="text-3xl font-bold text-brand-deep">{title}</h1>{sub && <p className="text-sm text-ink/70">{sub}</p>}</header>;
+  <header className="mb-5"><h1 className="text-xl font-semibold text-brand-deep">{title}</h1>{sub && <p className="text-sm text-ink/70">{sub}</p>}</header>;

@@ -55,11 +55,11 @@ export const posts: Array<{
   mediaCount?: number;
   avatar?: string;
 }> = [
-  { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · Grow3dge · 2h ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live. ✨", reactions: { Support: 24, Insightful: 9, Connect: 2 }, avatar: "/assets/Rectangle4.png" },
-  { id: 2, author: "Lila Hernandez", tag: "Si Her", meta: "Ecosystem Growth · Well-Being · 2h ago", body: "At a Web3 conference, we can draw inspiration from the majestic mountains that tower above us, reaching for the clouds. They symbolize the enduring guardianship of innovation in our digital landscape…", reactions: { Support: 18, Insightful: 7, Connect: 3 }, media: "landscape", avatar: "/assets/Group2147232031.png" },
+  { id: 1, author: "Amber Cardera", tag: "Grow3dge", meta: "Product-Led Growth · 2h\u00a0ago", body: "Just wrapped “Mastering AI Automations” — what energy in the room. Huge gratitude to everyone who showed up. Your badges are live. ✨", reactions: { Support: 24, Insightful: 9, Connect: 2 }, avatar: "/assets/Rectangle4.png" },
+  { id: 2, author: "Lila Hernandez", tag: "Si Her", meta: "Ecosystem Growth · Well-Being · 2h\u00a0ago", body: "At a Web3 conference, we can draw inspiration from the majestic mountains that tower above us, reaching for the clouds. They symbolize the enduring guardianship of innovation in our digital landscape…", reactions: { Support: 18, Insightful: 7, Connect: 3 }, media: "landscape", avatar: "/assets/Group2147232031.png" },
 ];
 export const requests = [
-  { name: "Lena Nguyen", role: "Leadership Coach · Founder, Si Her", badge: "Guide", connections: "2 shared connections", age: "2d ago", online: true, note: "Your question about holding boundaries without going cold — I’ve been chewing on it since. Would love to keep that conversation going.", session: "Leading Without Losing Yourself" },
+  { name: "Lena Nguyen", role: "Leadership Coach · Founder, Si\u00a0Her", badge: "Guide", connections: "2 shared connections", age: "2d ago", online: true, note: "Your question about holding boundaries without going cold — I’ve been chewing on it since. Would love to keep that conversation going.", session: "Leading Without Losing Yourself" },
   { name: "Priya Raman", role: "Protocol Research", badge: "Explorer", connections: "No shared connections", age: "5d ago", online: false, note: "I was the one who asked the awkward question about token vesting at the end. Still thinking about your answer.", session: "Tokenomics 101" },
 ];
 export const met = [

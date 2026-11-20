@@ -5,7 +5,7 @@ export default function Page() {
     <>
       <header className="mb-5">
         <div className="flex items-center justify-between gap-2">
-          <h1 className="text-3xl font-bold text-brand-deep">Streams</h1>
+          <h1 className="text-xl font-semibold text-brand-deep">Streams</h1>
           <span className="flex shrink-0 items-center gap-1.5 text-[9px] font-bold uppercase tracking-wide text-[#db4d54] sm:text-xs">
             <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#e54b58]" />
             {liveNowStreams.length + 1} live right now

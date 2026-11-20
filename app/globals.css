@@ -18,6 +18,8 @@
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 body { background: var(--color-page); color: var(--color-ink); }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 :where(a[href], button:not(:disabled), input[type="button"]:not(:disabled), input[type="submit"]:not(:disabled), input[type="reset"]:not(:disabled), summary, [role="button"]:not([aria-disabled="true"]):not([disabled]), [role="link"]:not([aria-disabled="true"]), [onclick]:not([aria-disabled="true"]):not([disabled])) { cursor: pointer; }
 :where(button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled, input[type="reset"]:disabled, [aria-disabled="true"]) { cursor: not-allowed; }
 .bg-navbar { background: linear-gradient(90deg,#7A45DC,#4F2BBE); }

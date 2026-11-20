@@ -6,7 +6,7 @@ export function HomeView() {
   const [tab, setTab] = useState<"feed" | "moments">("feed");
   return (<div className="font-geist">
     <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-      <h1 className="whitespace-nowrap text-lg font-semibold text-ink">Welcome back, <span className="text-brand">julienne.siu</span> <span aria-hidden="true">👋</span></h1>
+      <h1 className="whitespace-nowrap text-xl font-semibold text-ink">Welcome back, <span className="text-brand">julienne.siu</span> <span aria-hidden="true">👋</span></h1>
       <div className="flex flex-wrap items-center justify-end gap-2">
         <div role="tablist" aria-label="Home view" className="flex items-center gap-1">
           <button role="tab" aria-selected={tab === "feed"} onClick={() => setTab("feed")} className={`inline-flex h-6 items-center justify-center rounded-full px-3 text-xs leading-none font-medium transition-colors ${tab === "feed" ? "bg-brand-deep text-white shadow-sm" : "text-ink/55 hover:bg-white"}`}>Feed</button>

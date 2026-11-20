@@ -75,18 +75,18 @@ export function LearnView() {
     <div className="space-y-10 pt-6 sm:space-y-5 sm:pt-0">
       <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-1">
         <div>
-          <h1 className="text-4xl font-bold text-brand-deep sm:text-3xl">Learn</h1>
+          <h1 className="text-xl font-semibold text-brand-deep">Learn</h1>
           <p className="max-w-2xl text-xl text-ink/65 sm:text-sm">Sessions led by people in your programs — live, on replay, or summarised in three minutes.</p>
         </div>
         <p className="shrink-0 whitespace-nowrap font-mono text-sm text-ink/45 sm:text-[10px]">6 sessions coming up</p>
       </header>
 
-      <div className="-mx-4 overflow-x-auto px-4 pb-3 pt-2 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 sm:pt-0">
-        <div className="flex w-max gap-2 pb-1 sm:w-auto sm:flex-wrap">
+      <div className="-mx-4 overflow-x-auto px-4 pb-1 scrollbar-hide sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
+        <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
           {programs.map(program => (
             <button key={program} type="button" onClick={() => setSelectedProgram(program)} aria-pressed={selectedProgram === program}
-              className={`shrink-0 rounded-full border px-4 py-2.5 text-sm transition-colors sm:py-2 sm:text-xs ${selectedProgram === program ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-ink/65 hover:border-brand/40"}`}>
-              {selectedProgram === program && <span className="mr-1.5 text-[9px]">●</span>}{program === "Si Her" ? "SI Her" : program}
+              className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${selectedProgram === program ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-ink/65 hover:border-brand/40"}`}>
+              {program === "Si Her" ? "SI Her" : program}
             </button>
           ))}
         </div>

@@ -101,9 +101,18 @@ function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () =
 
       <section className="mt-4 border-t border-white/15 pt-5">
         <h3 className="mb-2 text-[11px] font-semibold tracking-[0.16em] text-white/65">EXPLORE</h3>
-        <Link href="/connections" className="block border-b border-white/10 py-2.5 text-sm">♧ &nbsp; Communities</Link>
-        <Link href="/learn" className="block border-b border-white/10 py-2.5 text-sm">▤ &nbsp; Si Her Publisher</Link>
-        <Link href="/streams" className="block py-2.5 text-sm">◷ &nbsp; Events</Link>
+        <Link href="/connections" className="flex items-center gap-2 border-b border-white/10 py-2.5 text-sm">
+          <span aria-hidden="true" className="grid h-5 w-6 shrink-0 place-items-center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0M15 14a5.5 5.5 0 0 1 6.5 5" /></svg></span>
+          Communities
+        </Link>
+        <Link href="/learn" className="flex items-center gap-2 border-b border-white/10 py-2.5 text-sm">
+          <span aria-hidden="true" className="grid h-5 w-6 shrink-0 place-items-center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 7h8M8 11h8M8 15h5" /></svg></span>
+          Si Her Publisher
+        </Link>
+        <Link href="/streams" className="flex items-center gap-2 py-2.5 text-sm">
+          <span aria-hidden="true" className="grid h-5 w-6 shrink-0 place-items-center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M16 3v4M8 3v4M3 10h18" /><circle cx="12" cy="15" r="2.5" /></svg></span>
+          Events
+        </Link>
       </section>
 
       <div className="mt-auto space-y-3 border-t border-white/15 pt-5 text-sm text-white/80">
@@ -149,12 +158,18 @@ function BottomTabBar() {
   const p = usePathname();
   const tabs = [nav[0], nav[2], nav[3], nav[4], nav[1]];
   return (
-    <nav className="bg-navbar fixed inset-x-0 bottom-0 z-20 flex justify-around py-3 text-xs text-white lg:hidden">
-      {tabs.map(([label, href, icon]) => <Link key={label} href={href} className={`flex flex-col items-center gap-1 ${isActive(p, href) ? "font-bold" : "opacity-70"}`}><NavIcon name={icon} />{label}</Link>)}
+    <nav className="bg-navbar fixed inset-x-0 bottom-0 z-20 flex justify-around py-2 text-xs lg:hidden">
+      {tabs.map(([label, href, icon]) => {
+        const active = isActive(p, href);
+        return <Link key={label} href={href} aria-current={active ? "page" : undefined} className={`flex min-w-[56px] flex-col items-center gap-1 ${active ? "font-semibold text-white" : "text-white/85"}`}>
+          <span className={`grid h-8 min-w-10 place-items-center rounded-full transition-colors ${active ? "bg-white/20" : ""}`}><NavIcon name={icon} /></span>
+          {label}
+        </Link>;
+      })}
     </nav>);
 }
 export default function Shell({ children }: { children: React.ReactNode }) {
   return (<div className="min-h-screen"><Navbar /><MobileBar />
-    <div className="flex min-h-[calc(100vh-5rem)]"><Sidebar /><main className="min-w-0 flex-1 bg-page p-4 pb-24 lg:pb-4"><div className="w-full">{children}</div></main><RightRail /></div>
+    <div className="flex min-h-[calc(100vh-5rem)]"><Sidebar /><main className="min-w-0 flex-1 bg-page p-4 pb-28 lg:pb-4"><div className="w-full">{children}</div></main><RightRail /></div>
     <BottomTabBar /></div>);
 }

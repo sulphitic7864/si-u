@@ -74,7 +74,7 @@ function ConnectionListSection({ query, segment, filters }: { query: string; seg
           </div>
         )) : <p className="p-6 text-center text-xs text-ink/55">No connections match these filters.</p>}
         <footer className="flex flex-wrap items-center justify-between gap-2 bg-[#fcfbfe] px-4 py-3.5">
-          <p className="font-mono text-[10px] text-ink/45 sm:text-xs">Showing {sorted.length} of {connectionStats.total.toLocaleString()} <span className="px-1">·</span> sorted by {sort === "Recently active" ? "activity" : "name"}</p>
+          <p className="font-mono text-[10px] text-ink/45 sm:text-xs">Showing {sorted.length} of <span className="whitespace-nowrap tracking-normal">{connectionStats.total.toLocaleString()}</span> <span className="px-1">·</span> sorted by {sort === "Recently active" ? "activity" : "name"}</p>
           <Button variant="ghost" className="!rounded-full !px-4 !py-2 text-xs sm:text-sm">Load 25 more</Button>
         </footer>
       </Card>
@@ -105,7 +105,7 @@ function RequestsSection({ tab, onTabChange }: { tab: ConnectionTab; onTabChange
       {tab === "received" ? (
         <Card className="overflow-hidden p-0">
           {visibleRequests.map((request, index) => (
-            <article key={request.name} className={`grid grid-cols-[44px_minmax(0,1fr)] gap-x-3 gap-y-2.5 px-3 py-4 sm:grid-cols-[56px_minmax(0,1fr)_auto] sm:gap-x-4 sm:px-4 sm:py-4 ${index > 0 ? "border-t border-border" : ""}`}>
+            <article key={request.name} className={`grid grid-cols-[44px_minmax(0,1fr)] gap-x-3 gap-y-2.5 px-2 py-3 sm:grid-cols-[56px_minmax(0,1fr)_auto] sm:gap-x-4 sm:px-4 sm:py-4 ${index > 0 ? "border-t border-border" : ""}`}>
               <div className="relative row-span-2 self-start">
                 <Avatar name={request.name} size={54} />
                 {request.online && <span aria-label="Online" className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-[#32b879]" />}
@@ -219,7 +219,7 @@ export function ConnectionList() {
       <div className="flex gap-2">
         <label className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-border bg-white px-4 py-3.5 text-ink/45 focus-within:border-brand/50">
           <SearchIcon />
-          <input value={q} onChange={event => setQ(event.target.value)} aria-label="Search your connections by name, handle or role" placeholder="Search your connections by name, handle or role" className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink/40" />
+          <input value={q} onChange={event => setQ(event.target.value)} aria-label="Search your connections by name, handle or role" placeholder="Search connections…" className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink/40" />
         </label>
         <Button variant="ghost" onClick={() => setFilterOpen(true)} className="flex shrink-0 items-center gap-1.5 !rounded-full !px-4 !py-3.5 text-sm">
           <FilterIcon /> Filters{activeFilters > 0 && <span className="grid h-4 min-w-4 place-items-center rounded-full bg-brand-deep px-1 text-[9px] text-white">{activeFilters}</span>}
@@ -228,13 +228,13 @@ export function ConnectionList() {
 
       {filterOpen && <FilterDrawer value={filters} onApply={value => { setFilters(value); setFilterOpen(false); }} onClose={() => setFilterOpen(false)} />}
 
-      <div className="flex flex-wrap gap-1.5">
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-hide sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
         {chips.map(({ value, count }) => (
           <button key={value} type="button" onClick={() => setSegment(value)} aria-pressed={segment === value}
-            className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors sm:text-sm ${segment === value ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-[#625a91]"}`}>
+            className={`flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${segment === value ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-[#625a91]"}`}>
             {value === "Online now" && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#20a66b]" />}
             {value}
-            <span className={`font-mono text-[11px] font-normal ${segment === value ? "text-white/70" : "text-[#8b83a8]"}`}>{count.toLocaleString()}</span>
+            <span className={`whitespace-nowrap font-mono text-[11px] font-normal tracking-normal ${segment === value ? "text-white/70" : "text-[#8b83a8]"}`}>{count.toLocaleString()}</span>
           </button>
         ))}
       </div>
