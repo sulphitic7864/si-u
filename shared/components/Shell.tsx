@@ -62,12 +62,17 @@ function Navbar() {
       </div>
     </header>);
 }
-function Sidebar({ mobile = false }: { mobile?: boolean }) {
+function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () => void }) {
   const sidebarClass = mobile
     ? "bg-sidebar flex h-full w-[290px] flex-col overflow-auto p-5 text-white"
     : "bg-sidebar hidden w-[290px] shrink-0 flex-col p-5 text-white lg:flex";
   return (
     <aside className={sidebarClass}>
+      {mobile && <div className="-mt-2 mb-1 flex justify-end">
+        <button type="button" aria-label="Close menu" onClick={onClose} className="grid h-8 w-8 place-items-center rounded-lg border border-white/20 bg-white/10 text-xl leading-none hover:bg-white/20">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-4 w-4"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>}
       <div className="relative mb-7">
         <div className="relative h-[86px] overflow-hidden rounded-xl">
           <Image src="/assets/Maskgroup.png" alt="" fill sizes="250px" className="object-cover" />
@@ -137,7 +142,7 @@ function MobileBar() {
       </div>
     </header>
     {open && <div className="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal>
-      <Sidebar mobile /><button className="flex-1 bg-black/40" aria-label="Close menu" onClick={() => setOpen(false)} /></div>}
+      <Sidebar mobile onClose={() => setOpen(false)} /><button className="flex-1 bg-black/60" aria-label="Close menu" onClick={() => setOpen(false)} /></div>}
   </>);
 }
 function BottomTabBar() {
