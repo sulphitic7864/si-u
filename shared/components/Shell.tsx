@@ -89,18 +89,18 @@ function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () =
       </button>
 
       <section className="mt-5 border-t border-white/15 pt-5 font-roobert">
-        <h3 className="mb-2 text-[11px] font-semibold tracking-[0.16em] text-white/65">YOUR CONNECTIONS</h3>
+        <h3 className="mb-2 text-xs font-semibold tracking-[0.16em] text-white/65">YOUR CONNECTIONS</h3>
         <Link href="/connections" className="flex items-center justify-between py-1.5 text-sm hover:text-white/80">
-          <span>Members</span><span>{me.members.toLocaleString()} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-[10px]">+7</span></span>
+          <span>Members</span><span>{me.members.toLocaleString()} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-xs">+7</span></span>
         </Link>
         <Link href="/connections" className="flex items-center justify-between py-1.5 text-sm hover:text-white/80">
-          <span>Communities</span><span>{me.communities} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-[10px]">+3</span></span>
+          <span>Communities</span><span>{me.communities} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-xs">+3</span></span>
         </Link>
         <p className="flex items-center justify-between py-1.5 text-sm text-white/45"><span>Companies</span><span>—</span></p>
       </section>
 
       <section className="mt-4 border-t border-white/15 pt-5">
-        <h3 className="mb-2 text-[11px] font-semibold tracking-[0.16em] text-white/65">EXPLORE</h3>
+        <h3 className="mb-2 text-xs font-semibold tracking-[0.16em] text-white/65">EXPLORE</h3>
         <Link href="/connections" className="flex items-center gap-2 border-b border-white/10 py-2.5 text-sm">
           <span aria-hidden="true" className="grid h-5 w-6 shrink-0 place-items-center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0M15 14a5.5 5.5 0 0 1 6.5 5" /></svg></span>
           Communities
@@ -122,7 +122,7 @@ function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () =
 }
 function RightRail() {
   return (
-    <aside className="hidden w-[290px] shrink-0 space-y-4 border-l border-border bg-white p-4 xl:block">
+    <aside className="hidden w-[290px] shrink-0 space-y-4 border-l border-border bg-page p-4 xl:block">
       <div className="-mx-4 -mt-4 mb-4 border-b border-border px-4 pb-4 pt-5">
         <p className="mb-2 text-xs text-ink/60">Looking for something?</p>
         <label className="flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-sm text-ink/55">

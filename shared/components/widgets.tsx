@@ -33,7 +33,7 @@ export const BadgesWidget = ({ done = 3, total = 5, next = "Grow3dge Incubator" 
           </svg>
         </span>
         <span className="min-w-0">
-          <span className="block text-[10px] text-ink/60">Next Badge - {Math.max(total - done, 0)} sessions away</span>
+          <span className="block text-xs text-ink/60">Next Badge - {Math.max(total - done, 0)} sessions away</span>
           <span className="block truncate text-sm font-medium text-ink">{next}</span>
         </span>
       </div>

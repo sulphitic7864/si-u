@@ -30,7 +30,7 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
           <h1 className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-2xl font-bold leading-tight">
             Kara Howard
             <span className="text-sm font-normal text-brand">@{handle}</span>
-            <span className="rounded border border-brand/40 px-1.5 py-0.5 font-mono text-[9px] font-medium text-brand">GUIDE</span>
+            <span className="rounded border border-brand/40 px-1.5 py-0.5 font-mono text-xs font-medium text-brand">GUIDE</span>
           </h1>
           <p className="mt-5 text-xs text-ink/60">Emerging Tech Adoption Leader · Web3 Connector</p>
           <p className="mt-3 max-w-3xl text-sm leading-5 text-ink/80">
@@ -52,7 +52,7 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
 
       <section className="flex items-center justify-between gap-4 rounded-2xl bg-[#35166e] px-5 py-[19px] text-white">
         <div className="min-w-0">
-          <p className="font-mono text-[9px] tracking-[0.16em] text-white/75">{viewer === "owner" ? "YOUR NEXT SESSION" : "NEXT SESSION"}</p>
+          <p className="font-mono text-xs tracking-[0.16em] text-white/75">{viewer === "owner" ? "YOUR NEXT SESSION" : "NEXT SESSION"}</p>
           <b className="block truncate text-sm">Leading Without Losing Yourself</b>
           <p className="text-xs text-white/75">Thu 14 Aug · 6:00 PM PT · 42 attending</p>
         </div>
@@ -69,10 +69,10 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
         <p className="text-xs leading-5 text-ink/80">
           I&apos;m Kara — I work on getting emerging tech into the hands of people who&apos;ve been left out of it. Most of what I do sits between community building and product: running sessions, connecting people who should know each other, and tuning what happens in a room into something that lasts.
         </p>
-        <p className="mb-2 mt-3 font-mono text-[9px] tracking-[0.14em] text-ink/50">VALUES</p>
+        <p className="mb-2 mt-3 font-mono text-xs tracking-[0.14em] text-ink/50">VALUES</p>
         <div className="flex flex-wrap gap-2">
           {["Integrity", "Clarity", "Consistency", "Growth", "Accountability"].map(value => (
-            <span key={value} className="rounded-full border border-brand/30 px-3 py-1 text-[10px] text-brand">{value}</span>
+            <span key={value} className="rounded-full border border-brand/30 px-3 py-1 text-xs text-brand">{value}</span>
           ))}
         </div>
       </Card>
@@ -84,26 +84,26 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
         </div>
         <div className="space-y-3">
           <div className="flex gap-3">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-border bg-page text-sm text-brand">I</span>
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-border bg-page text-xs font-semibold text-brand">SI3</span>
             <div className="min-w-0">
-              <p className="text-xs font-semibold">Founder <span className="ml-1 rounded-full border border-brand/30 px-2 py-0.5 font-mono text-[8px] font-normal text-brand">EMPLOYMENT</span></p>
-              <p className="mt-1 text-[10px] text-ink/60">SI3 · 2023 — Present</p>
-              <p className="mt-1 text-[10px] leading-4 text-ink/65">Building learning and connection infrastructure for women and non-binary people entering Web3.</p>
+              <p className="text-xs font-semibold">Founder <span className="ml-1 rounded-full border border-brand/30 px-2 py-0.5 font-mono text-xs font-normal text-brand">EMPLOYMENT</span></p>
+              <p className="mt-1 text-xs text-ink/60">SI3 · 2023 — Present</p>
+              <p className="mt-1 text-xs leading-4 text-ink/65">Building learning and connection infrastructure for women and non-binary people entering Web3.</p>
             </div>
           </div>
           <div className="flex gap-3">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-border bg-page text-sm text-brand">R</span>
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-border bg-page text-xs font-semibold text-brand">G3</span>
             <div className="min-w-0">
-              <p className="text-xs font-semibold">Core Contributor <span className="ml-1 rounded-full border border-brand/30 px-2 py-0.5 font-mono text-[8px] font-normal text-brand">CONTRIBUTION</span></p>
-              <p className="mt-1 text-[10px] text-ink/60">Grow3dge DAO · 2022 — Present</p>
-              <p className="mt-1 text-[10px] leading-4 text-ink/65">Curriculum design and session hosting across three cohorts.</p>
+              <p className="text-xs font-semibold">Core Contributor <span className="ml-1 rounded-full border border-brand/30 px-2 py-0.5 font-mono text-xs font-normal text-brand">CONTRIBUTION</span></p>
+              <p className="mt-1 text-xs text-ink/60">Grow3dge DAO · 2022 — Present</p>
+              <p className="mt-1 text-xs leading-4 text-ink/65">Curriculum design and session hosting across three cohorts.</p>
             </div>
           </div>
         </div>
         <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-dashed border-brand/30 px-3 py-2.5">
           <div>
-            <p className="text-[11px] font-semibold">Fill this in from LinkedIn</p>
-            <p className="mt-0.5 text-[9px] text-ink/60">On LinkedIn: your profile &gt; More &gt; Save to PDF. Then upload it here.</p>
+            <p className="text-xs font-semibold">Fill this in from LinkedIn</p>
+            <p className="mt-0.5 text-xs text-ink/60">On LinkedIn: your profile &gt; More &gt; Save to PDF. Then upload it here.</p>
           </div>
           {viewer === "owner" && <Button variant="ghost" density="compact" className="shrink-0">Upload PDF</Button>}
         </div>
@@ -111,22 +111,22 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
 
       <Card className="p-5">
         <div className="mb-3 flex items-center justify-between">
-          <div><h2 className="text-sm font-semibold">Sessions</h2><p className="text-[10px] text-ink/60">18 led · 24 attended</p></div>
+          <div><h2 className="text-sm font-semibold">Sessions</h2><p className="text-xs text-ink/60">18 led · 24 attended</p></div>
           <Link href="?tab=sessions" className="text-xs text-brand">View all</Link>
         </div>
         <div className="mb-3 flex items-center gap-3 rounded-xl border border-border bg-page/70 px-3 py-2">
           <div className="flex -space-x-1.5" aria-hidden="true">
             {Array.from({ length: 6 }, (_, index) => <span key={index} className="h-5 w-5 rounded-full border-2 border-white bg-gradient-to-br from-[#d59bf4] to-[#b84ab9]" />)}
           </div>
-          <div><p className="text-[10px] font-semibold">6 POAPs · 2 certifications</p><p className="text-[9px] text-ink/60">Attendance badges, minted to you when a session ends.</p></div>
+          <div><p className="text-xs font-semibold">6 POAPs · 2 certifications</p><p className="text-xs text-ink/60">Attendance badges, minted to you when a session ends.</p></div>
         </div>
         {(activeTab === "sessions" ? profileSessions : profileSessions.slice(0, 2)).map(session => (
           <div key={session.title} className="flex items-center justify-between gap-3 border-t border-border/70 py-2.5">
             <div className="min-w-0">
-              <p className="truncate text-[11px] font-semibold">{session.title} <span className="rounded-full border border-brand/30 px-1.5 py-0.5 font-mono text-[8px] font-normal text-brand">{session.role}</span></p>
-              <p className="mt-1 text-[9px] text-ink/60">{session.meta}</p>
+              <p className="truncate text-xs font-semibold">{session.title} <span className="rounded-full border border-brand/30 px-1.5 py-0.5 font-mono text-xs font-normal text-brand">{session.role}</span></p>
+              <p className="mt-1 text-xs text-ink/60">{session.meta}</p>
             </div>
-            <span className="shrink-0 text-[9px] text-brand">POAP earned</span>
+            <span className="shrink-0 text-xs text-brand">POAP earned</span>
           </div>
         ))}
       </Card>
@@ -134,7 +134,7 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
       <nav aria-label="Profile content" className="flex items-center gap-1 rounded-2xl border border-border bg-surface p-2">
         {tabs.map(({ id, label, count }) => (
           <Link key={id} href={`?tab=${id}`} className={`rounded-lg px-3 py-1.5 text-xs ${activeTab === id ? "bg-page text-brand-deep" : "text-ink/65"}`}>
-            {label}{count && <span className="ml-1.5 rounded-full bg-page px-1.5 py-0.5 text-[9px]">{count}</span>}
+            {label}{count && <span className="ml-1.5 rounded-full bg-page px-1.5 py-0.5 text-xs">{count}</span>}
           </Link>
         ))}
       </nav>

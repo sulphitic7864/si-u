@@ -17,13 +17,13 @@ export function MomentsPlayer() {
       <div className="relative h-[504px] overflow-hidden rounded-[14px] bg-slate-900 text-white shadow-lg">
         <Image src={m.image} alt={`${m.author} sharing a moment`} fill sizes="(max-width: 640px) 100vw, 328px" className="object-cover" />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/5" />
-        <span className="absolute left-3 top-3 rounded bg-[#74833b]/85 px-2.5 py-1 text-[10px]">{m.tag}</span>
+        <span className="absolute left-3 top-3 rounded bg-[#74833b]/85 px-2.5 py-1 text-xs">{m.tag}</span>
         <div className="absolute right-3 top-[35%] flex flex-col items-center gap-2 drop-shadow">
-          <button type="button" aria-label="Like" onClick={() => flip(liked, setLiked)} className="flex flex-col items-center gap-1 text-[9px]">
+          <button type="button" aria-label="Like" onClick={() => flip(liked, setLiked)} className="flex flex-col items-center gap-1 text-xs">
             <Image src="/assets/icons/Group2147232344.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" />
             {m.likes + (liked.includes(i) ? 1 : 0)}
           </button>
-          <button type="button" aria-label="Comments" onClick={() => setCommentsOpen(open => !open)} className="flex flex-col items-center gap-1 text-[9px]">
+          <button type="button" aria-label="Comments" onClick={() => setCommentsOpen(open => !open)} className="flex flex-col items-center gap-1 text-xs">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-600/60">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
             </span>
@@ -43,12 +43,12 @@ export function MomentsPlayer() {
           <div className="flex items-center gap-2">
             <Avatar name={m.author} size={38} shape="rounded" />
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-1.5"><b className="text-xs">{m.author}</b><span className="text-[8px] text-white/75">{m.handle}</span><button type="button" className="rounded-full border border-white/60 px-2 py-0.5 text-[8px]">Connect</button></div>
-              <p className="text-[9px] text-white/80">{m.role}</p>
+              <div className="flex items-center gap-1.5"><b className="text-xs">{m.author}</b><span className="text-xs text-white/75">{m.handle}</span><button type="button" className="rounded-full border border-white/60 px-2 py-0.5 text-xs">Connect</button></div>
+              <p className="text-xs text-white/80">{m.role}</p>
             </div>
           </div>
-          <p className="text-[11px] leading-4">{m.caption}</p>
-          <p className="text-[9px] text-white/75">{m.hashtags}</p>
+          <p className="text-xs leading-4">{m.caption}</p>
+          <p className="text-xs text-white/75">{m.hashtags}</p>
         </div>
       </div>
       <div className="absolute -right-8 top-1/2 flex -translate-y-1/2 flex-col gap-2">
@@ -61,10 +61,10 @@ export function MomentsPlayer() {
       </div>
       <div className="mt-2.5 flex items-center gap-2 rounded-xl bg-white p-2.5 text-ink shadow-sm">
         <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-[#5043ae] text-center text-white">
-          <span className="text-[7px] leading-3">April</span><b className="text-xs leading-3">{m.sessionDate}</b>
+          <span className="text-xs leading-3">April</span><b className="text-xs leading-3">{m.sessionDate}</b>
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-[9px] text-ink/60">Next Session by {m.author}</p>
+          <p className="text-xs text-ink/60">Next Session by {m.author}</p>
           <b className="block truncate text-xs text-brand-deep">{m.session}</b>
         </div>
         <RsvpButton title={m.session} when={`April ${m.sessionDate}`} label="• Attend →" density="compact" />

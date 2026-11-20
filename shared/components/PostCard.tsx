@@ -18,8 +18,13 @@ export function EngagementBar({ reactions }: { reactions: R }) {
     </button>)}</div>);
 }
 export function PostCard({ author, avatar, tag, meta, body, reactions, children }: { author: string; avatar?: string; tag?: Program; meta: string; body: string; reactions: R; children?: ReactNode }) {
+  const [expanded, setExpanded] = useState(false);
+  const canExpand = body.length > 180;
+  const postBody = body.endsWith("…") ? body.slice(0, -1) : body;
   return (<Card className="p-4 sm:p-5"><div className="flex items-center gap-3"><Avatar name={author} size={44} shape="rounded" src={avatar} /><div className="min-w-0 flex-1">
-    <div className="flex flex-wrap items-center gap-2"><b className="text-[15px]">{author}</b>{tag && <span className="rounded-md bg-brand/10 px-2 py-1 text-[10px] font-medium text-brand-deep">{tag}</span>}</div>
+    <div className="flex flex-wrap items-center gap-2"><b className="text-[15px]">{author}</b>{tag && <span className="rounded-md bg-brand/10 px-2 py-1 text-xs font-medium text-brand-deep">{tag}</span>}</div>
     <p className="text-xs text-ink/60">{meta}</p></div><button aria-label={`More options for ${author}'s post`} className="self-start px-2 text-xl leading-none text-ink/45">⋮</button></div>
-    <p className="mt-3 text-[15px] leading-6">{body}</p>{children}<EngagementBar reactions={reactions} /></Card>);
+    <p className={`mt-3 text-[15px] leading-6 ${canExpand && !expanded ? "line-clamp-3" : ""}`}>{postBody}</p>
+    {canExpand && <button type="button" aria-expanded={expanded} onClick={() => setExpanded(value => !value)} className="mt-1 text-xs font-medium text-brand">{expanded ? "See less" : "See more"}</button>}
+    {children}<EngagementBar reactions={reactions} /></Card>);
 }

@@ -52,7 +52,7 @@ export function StreamsView() {
         style={{ background: "linear-gradient(112deg, #1a1244 0%, #34185f 43%, #913586 100%)" }}>
         <div aria-hidden="true" className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#e05baf]/25 to-transparent" />
         <div className="relative">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e74b58] px-3 py-1.5 font-mono text-[10px] font-semibold tracking-wide">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e74b58] px-3 py-1.5 font-mono text-xs font-semibold tracking-wide">
             <span aria-hidden="true" className="h-2 w-2 rounded-full bg-white" /> LIVE NOW
           </span>
           <h2 className="mt-5 max-w-2xl text-[30px] font-medium leading-tight sm:text-[38px]">{hero.title}</h2>
@@ -60,7 +60,7 @@ export function StreamsView() {
             <Avatar name={hero.host} size={38} src="/assets/icons/av.png" />
             <span className="text-sm font-semibold sm:text-base">{hero.host}</span>
             <span className="text-sm text-white/65 sm:text-base">zuza.siher.eth</span>
-            <span className="rounded-full bg-white/15 px-3.5 py-1.5 font-mono text-[10px] font-semibold tracking-wide text-white">SI HER</span>
+            <span className="rounded-full bg-white/15 px-3.5 py-1.5 font-mono text-xs font-semibold tracking-wide text-white">SI HER</span>
           </div>
           <div className="mt-5 flex flex-wrap items-center gap-5">
             <Button variant="ghost" className="flex items-center gap-3 !rounded-xl !border-0 !bg-white !px-6 !py-3 !text-sm !font-semibold !text-brand-deep sm:!text-base">
@@ -84,16 +84,16 @@ export function StreamsView() {
       <Card className="p-4 sm:p-5">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-sm font-semibold text-ink sm:text-base">Your connections are watching</h2>
-          <Link href="/connections" className="shrink-0 text-[10px] font-medium text-brand hover:text-brand-deep sm:text-xs">See all →</Link>
+          <Link href="/connections" className="shrink-0 text-xs font-medium text-brand hover:text-brand-deep">See all →</Link>
         </div>
-        <div className="mt-4 flex gap-4 overflow-x-auto pb-1">
+        <div className="mt-4 flex gap-4 overflow-x-auto px-1 pb-1 pt-2">
           {streamWatchers.map(watcher => (
             <Link key={watcher.name} href="/connections" className="flex w-14 shrink-0 flex-col items-center text-center">
               <span className="rounded-full ring-2 ring-[#e65a68] ring-offset-2 ring-offset-white">
                 <Avatar name={watcher.name} size={36} src={watcher.avatar} />
               </span>
-              <span className="mt-2 w-full truncate text-[9px] font-medium text-ink">{watcher.name}</span>
-              <span className="mt-0.5 w-full truncate text-[8px] text-ink/50">{watcher.program}</span>
+              <span className="mt-2 w-full truncate text-xs font-medium text-ink">{watcher.name}</span>
+              <span className="mt-0.5 w-full truncate text-xs text-ink/50">{watcher.program}</span>
             </Link>
           ))}
         </div>
@@ -115,7 +115,7 @@ export function StreamsView() {
               <Card key={stream.title} className="!overflow-hidden !p-0">
                 <div className="relative flex h-[172px] flex-col justify-between p-3 text-white" style={{ background: stream.gradient }}>
                   <div className="flex items-start justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e74b58] px-3 py-1 text-[10px] font-bold tracking-[0.16em]">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e74b58] px-3 py-1 text-xs font-bold tracking-[0.16em]">
                       <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-white" /> LIVE
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-[#241747]/80 px-2.5 py-1 text-xs font-medium">
@@ -130,7 +130,7 @@ export function StreamsView() {
                     <div className="flex items-center gap-2 text-xs">
                       <div aria-hidden="true" className="flex -space-x-1.5">
                         {stream.connectionsWatching.map((initial, index) => (
-                          <span key={`${initial}-${index}`} className="grid h-7 w-7 place-items-center rounded-full border border-white/80 bg-white/10 text-[10px]">
+                          <span key={`${initial}-${index}`} className="grid h-7 w-7 place-items-center rounded-full border border-white/80 bg-white/10 text-xs">
                             {initial}
                           </span>
                         ))}

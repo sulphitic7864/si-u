@@ -14,7 +14,7 @@ export function RsvpButton({ title, when, label = "Attend", density = "default",
   const toggle = (o: string) => setSel(s => s.includes(o) ? s.filter(x => x !== o) : [...s, o]);
   return (<>
     {done
-      ? <span className={`rounded-lg bg-brand/10 text-brand ${density === "compact" ? "px-3 py-1 text-[10px]" : "px-4 py-2 text-sm"}`}>✓ Attending</span>
+      ? <span className={`rounded-lg bg-brand/10 text-brand ${density === "compact" ? "px-3 py-1 text-xs" : "px-4 py-2 text-sm"}`}>✓ Attending</span>
       : <Button density={density} variant={variant} className={className} onClick={() => setOpen(true)}>{label}</Button>}
     {open && <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog" aria-modal="true" aria-labelledby="schedule-session-title">
       <div className="w-full max-w-sm rounded-xl bg-white p-4 shadow-xl sm:p-5">
@@ -22,12 +22,12 @@ export function RsvpButton({ title, when, label = "Attend", density = "default",
           <h2 id="schedule-session-title" className="text-sm font-semibold">Schedule this session</h2>
           <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="text-lg leading-none text-ink/55 hover:text-ink">×</button>
         </div>
-        <p className="mb-3 text-[10px] leading-4 text-ink/55">Attending saves it to your SI U scheduler and lets you export to your personal calendar.</p>
+        <p className="mb-3 text-xs leading-4 text-ink/55">Attending saves it to your SI U scheduler and lets you export to your personal calendar.</p>
         <div className="mb-3 flex gap-2 rounded-lg bg-[#f5f2fa] p-3">
           <span className="w-1 shrink-0 rounded-full bg-brand-deep" />
           <span className="min-w-0">
             <b className="block truncate text-xs font-medium">{title}</b>
-            <span className="mt-1 block text-[10px] text-ink/55">{when} · Grow3dge</span>
+            <span className="mt-1 block text-xs text-ink/55">{when} · Grow3dge</span>
           </span>
         </div>
         <div className="space-y-1.5 border-t border-border pt-2">
@@ -41,7 +41,7 @@ export function RsvpButton({ title, when, label = "Attend", density = "default",
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block font-medium">{option.title}</span>
-                <span className="mt-0.5 block text-[9px] leading-3 text-ink/50">{option.description}</span>
+                <span className="mt-0.5 block text-xs leading-4 text-ink/50">{option.description}</span>
               </span>
               <input type="checkbox" className="peer sr-only" checked={checked} onChange={() => toggle(option.title)} />
               <span aria-hidden="true" className={`grid h-4 w-4 shrink-0 place-items-center rounded-full border ${checked ? "border-brand" : "border-border"}`}>
@@ -61,7 +61,7 @@ export function RsvpButton({ title, when, label = "Attend", density = "default",
           <path d="m16 24 5 5 11-12" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
         </svg>
         <h2 id="attending-title" className="text-sm font-semibold">You’re Attending!</h2>
-        <p className="mt-2 text-[10px] leading-4 text-ink/55">Session added to your SI U scheduler.<br />Invite sent to your connected calendar.</p>
+        <p className="mt-2 text-xs leading-4 text-ink/55">Session added to your SI U scheduler.<br />Invite sent to your connected calendar.</p>
         <Button className="mt-4 w-full" onClick={() => setSuccess(false)}>Done</Button>
       </div>
     </div>}

@@ -110,7 +110,7 @@ export function CalendarWidget() {
           </div>
         </div>
         <div className="grid grid-cols-7 gap-1 text-center">
-          {weekdays.map(day => <span key={day} className="py-1 text-[9px] text-ink/50">{day}</span>)}
+          {weekdays.map(day => <span key={day} className="py-1 text-xs text-ink/50">{day}</span>)}
         </div>
         <div className="mt-1 grid grid-cols-7 gap-1 text-center">
           {week.map(date => {
@@ -118,9 +118,9 @@ export function CalendarWidget() {
             const hasSessions = sessions.some(session => session.date === dateKey(date));
             const muted = date.getMonth() !== selectedDate.getMonth();
             return <button key={dateKey(date)} type="button" aria-label={date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })} aria-pressed={selected} onClick={() => selectDate(date)}
-              className={`flex h-8 flex-col items-center justify-center rounded-md text-[10px] ${selected ? "bg-brand-deep font-semibold text-white" : muted ? "text-ink/35" : "text-ink/75 hover:bg-page"}`}>
+              className={`flex h-8 flex-col items-center justify-center rounded-md text-xs ${selected ? "bg-brand-deep font-semibold text-white" : muted ? "text-ink/35" : "text-ink/75 hover:bg-page"}`}>
               <span>{date.getDate()}</span>
-              <span className="h-2 text-[9px] leading-[8px]">{hasSessions ? selected ? "!" : "•" : ""}</span>
+              <span aria-hidden="true" className={`h-1 w-1 rounded-full ${hasSessions ? selected ? "bg-white" : "bg-brand" : "bg-transparent"}`} />
             </button>;
           })}
         </div>
@@ -129,8 +129,8 @@ export function CalendarWidget() {
         {weekEvents.length ? weekEvents.map((session, index) => <div key={session.id} className={`relative flex items-center gap-2.5 py-3 ${index > 0 ? "border-t border-border/70" : ""}`}>
           <span className={`absolute inset-y-3 left-0 w-1 rounded-full ${session.live ? "bg-rose-500" : "bg-fuchsia-300"}`} />
           <div className="min-w-0 flex-1 pl-2">
-            <p className="truncate text-[10px] font-medium">{session.title}</p>
-            <p className="mt-1 flex items-center gap-1.5 whitespace-nowrap text-[9px] text-ink/60">
+            <p className="truncate text-xs font-medium">{session.title}</p>
+            <p className="mt-1 flex items-center gap-1.5 whitespace-nowrap text-xs text-ink/60">
               {session.live ? <span className="rounded bg-rose-500 px-1.5 py-0.5 font-semibold text-white">LIVE</span> : <span>{session.time}</span>}
               <span>·</span><span className="truncate">{session.host}</span>
             </p>
@@ -151,7 +151,7 @@ export function CalendarWidget() {
             <CalendarControls onPrevious={() => changeMonth(-1)} onNext={() => changeMonth(1)} previousLabel="Previous month" nextLabel="Next month" />
           </div>
           <div className="grid grid-cols-7 gap-1 text-center">
-            {weekdays.map(day => <span key={day} className="py-1 text-[9px] text-ink/50">{day}</span>)}
+            {weekdays.map(day => <span key={day} className="py-1 text-xs text-ink/50">{day}</span>)}
           </div>
           <div className="grid grid-cols-7 gap-1 text-center">
             {monthCalendarDays.map(date => {
@@ -159,34 +159,34 @@ export function CalendarWidget() {
               const inMonth = date.getMonth() === month.getMonth();
               const hasSessions = sessions.some(session => session.date === dateKey(date));
               return <button key={dateKey(date)} type="button" aria-pressed={selected} onClick={() => selectDate(date)}
-                className={`flex h-7 flex-col items-center justify-center rounded-md text-[10px] ${selected ? "bg-brand-deep font-semibold text-white" : inMonth ? "text-ink/75 hover:bg-page" : "text-ink/30"}`}>
+                className={`flex h-7 flex-col items-center justify-center rounded-md text-xs ${selected ? "bg-brand-deep font-semibold text-white" : inMonth ? "text-ink/75 hover:bg-page" : "text-ink/30"}`}>
                 <span>{date.getDate()}</span>
-                <span className="h-1 text-[7px] leading-[6px]">{hasSessions ? "•" : ""}</span>
+                <span aria-hidden="true" className={`h-1 w-1 rounded-full ${hasSessions ? selected ? "bg-white" : "bg-brand" : "bg-transparent"}`} />
               </button>;
             })}
           </div>
           <div className="mt-5 flex flex-wrap gap-1.5 border-t border-border pt-4">
             {programs.map(item => <button key={item} type="button" aria-pressed={program === item} onClick={() => setProgram(item)}
-              className={`rounded-full border px-2.5 py-1 text-[9px] ${program === item ? "border-brand-deep bg-brand-deep text-white" : "border-border text-ink/65"}`}>{item}</button>)}
+              className={`rounded-full border px-2.5 py-1 text-xs ${program === item ? "border-brand-deep bg-brand-deep text-white" : "border-border text-ink/65"}`}>{item}</button>)}
           </div>
         </section>
         <section className="min-w-0 p-4 sm:p-6">
           <button type="button" onClick={() => setExpanded(false)} aria-label="Close calendar" className="absolute right-3 top-3 text-lg leading-none text-ink/55 hover:text-ink">×</button>
           <h2 className="mb-4 flex items-center gap-2 pr-7 text-sm font-semibold">
             {isSameDay(selectedDate, initialDate) ? `Today, ${selectedDate.toLocaleDateString("en-US", { month: "long" })} ${ordinal(selectedDate.getDate())}` : selectedDate.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
-            <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[9px] font-semibold text-rose-500">{liveCount} LIVE</span>
+            <span className="rounded bg-rose-50 px-1.5 py-0.5 text-xs font-semibold text-rose-500">{liveCount} LIVE</span>
           </h2>
           <div className="space-y-2">
             {modalEvents.length ? modalEvents.map(session => <article key={session.id} className="flex items-center gap-3 rounded-lg border border-border/70 p-3">
               <span className={`h-9 w-1 shrink-0 rounded-full ${session.live ? "bg-rose-500" : "bg-brand/70"}`} />
               <div className="min-w-0 flex-1">
                 <h3 className="truncate text-xs font-medium">{session.title}</h3>
-                <p className="mt-1 truncate text-[10px] text-ink/55">
+                <p className="mt-1 truncate text-xs text-ink/55">
                   {session.live ? "Live now" : sessionWhen(session.date, session.time)} <span className="px-1">·</span> {session.host}
                   {session.live && <span> <span className="px-1">·</span> {session.attending} Watching</span>}
                 </p>
               </div>
-              <span className="hidden rounded-full bg-brand/5 px-2 py-1 text-[9px] text-brand sm:inline">{session.program}</span>
+              <span className="hidden rounded-full bg-brand/5 px-2 py-1 text-xs text-brand sm:inline">{session.program}</span>
               {session.live
                 ? <Button className="px-4 py-2 text-xs" style={{ backgroundColor: "#e84d4d" }}>Watch</Button>
                 : <RsvpButton title={session.title} when={sessionWhen(session.date, session.time)} label="Attend" />}

@@ -59,7 +59,7 @@ function ConnectionListSection({ query, segment, filters }: { query: string; seg
               <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                 <b className="text-sm font-semibold sm:text-base">{connection.name}</b>
                 <span className="font-mono text-xs text-[#8b83a8] sm:text-sm">@{connection.handle}</span>
-                {connection.guide && <span className="rounded-full bg-[#fff0f8] px-2.5 py-1 text-[9px] font-semibold text-[#c33b82] sm:text-[10px]">● Guide</span>}
+                {connection.guide && <span className="rounded-full bg-[#fff0f8] px-2.5 py-1 text-xs font-semibold text-[#c33b82]">● Guide</span>}
               </div>
               <p className="mt-0.5 truncate text-xs text-[#625a91] sm:text-sm">{connection.role}</p>
             </div>
@@ -74,7 +74,7 @@ function ConnectionListSection({ query, segment, filters }: { query: string; seg
           </div>
         )) : <p className="p-6 text-center text-xs text-ink/55">No connections match these filters.</p>}
         <footer className="flex flex-wrap items-center justify-between gap-2 bg-[#fcfbfe] px-4 py-3.5">
-          <p className="font-mono text-[10px] text-ink/45 sm:text-xs">Showing {sorted.length} of <span className="whitespace-nowrap tracking-normal">{connectionStats.total.toLocaleString()}</span> <span className="px-1">·</span> sorted by {sort === "Recently active" ? "activity" : "name"}</p>
+          <p className="font-mono text-xs text-ink/45">Showing {sorted.length} of <span className="whitespace-nowrap tracking-normal">{connectionStats.total.toLocaleString()}</span> <span className="px-1">·</span> sorted by {sort === "Recently active" ? "activity" : "name"}</p>
           <Button variant="ghost" className="!rounded-full !px-4 !py-2 text-xs sm:text-sm">Load 25 more</Button>
         </footer>
       </Card>
@@ -95,7 +95,7 @@ function RequestsSection({ tab, onTabChange }: { tab: ConnectionTab; onTabChange
         <div className="flex shrink-0 rounded-full bg-[#eeeaf7] p-1">
           {(["received", "sent"] as const).map(value => (
             <button key={value} type="button" onClick={() => onTabChange(value)} aria-pressed={tab === value}
-              className={`rounded-full px-3 py-1.5 text-[10px] font-medium capitalize transition-colors sm:px-4 sm:text-sm ${tab === value ? "bg-white text-brand-deep shadow-sm" : "text-ink/60 hover:text-brand"}`}>
+              className={`rounded-full px-3 py-1.5 text-xs font-medium capitalize transition-colors sm:px-4 sm:text-sm ${tab === value ? "bg-white text-brand-deep shadow-sm" : "text-ink/60 hover:text-brand"}`}>
               {value} <span className="ml-1">{value === "received" ? receivedCount : sentRows.length}</span>
             </button>
           ))}
@@ -113,7 +113,7 @@ function RequestsSection({ tab, onTabChange }: { tab: ConnectionTab; onTabChange
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   <b className="text-sm font-semibold sm:text-base">{request.name}</b>
-                  <span className={`rounded-full px-2.5 py-1 text-[9px] font-semibold sm:text-[10px] ${request.badge === "Guide" ? "bg-[#fff0f8] text-[#c33b82]" : "bg-[#f0eef9] text-[#645b8e]"}`}>● {request.badge}</span>
+                  <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${request.badge === "Guide" ? "bg-[#fff0f8] text-[#c33b82]" : "bg-[#f0eef9] text-[#645b8e]"}`}>● {request.badge}</span>
                 </div>
                 <p className="mt-1 text-xs leading-5 text-ink/55 sm:text-sm">
                   {request.role}<span className="px-1.5">·</span>{request.connections}<span className="px-1.5">·</span>{request.age}
@@ -170,7 +170,7 @@ function PeopleMetSection() {
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                     <b className="text-sm font-semibold sm:text-base">{person.name}</b>
-                    <span className={`rounded-full px-2.5 py-1 text-[9px] font-semibold sm:text-[10px] ${person.badge === "Guide" ? "bg-[#fff0f8] text-[#c33b82]" : "bg-[#f0eef9] text-[#645b8e]"}`}>● {person.badge}</span>
+                    <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${person.badge === "Guide" ? "bg-[#fff0f8] text-[#c33b82]" : "bg-[#f0eef9] text-[#645b8e]"}`}>● {person.badge}</span>
                   </div>
                   <p className="mt-0.5 truncate text-xs text-[#625a91] sm:text-sm">{person.role}</p>
                 </div>
@@ -222,7 +222,7 @@ export function ConnectionList() {
           <input value={q} onChange={event => setQ(event.target.value)} aria-label="Search your connections by name, handle or role" placeholder="Search connections…" className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink/40" />
         </label>
         <Button variant="ghost" onClick={() => setFilterOpen(true)} className="flex shrink-0 items-center gap-1.5 !rounded-full !px-4 !py-3.5 text-sm">
-          <FilterIcon /> Filters{activeFilters > 0 && <span className="grid h-4 min-w-4 place-items-center rounded-full bg-brand-deep px-1 text-[9px] text-white">{activeFilters}</span>}
+          <FilterIcon /> Filters{activeFilters > 0 && <span className="grid h-4 min-w-4 place-items-center rounded-full bg-brand-deep px-1 text-xs text-white">{activeFilters}</span>}
         </Button>
       </div>
 
@@ -234,7 +234,7 @@ export function ConnectionList() {
             className={`flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${segment === value ? "border-brand-deep bg-brand-deep text-white" : "border-border bg-white text-[#625a91]"}`}>
             {value === "Online now" && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#20a66b]" />}
             {value}
-            <span className={`whitespace-nowrap font-mono text-[11px] font-normal tracking-normal ${segment === value ? "text-white/70" : "text-[#8b83a8]"}`}>{count.toLocaleString()}</span>
+            <span className={`whitespace-nowrap font-mono text-xs font-normal tracking-normal ${segment === value ? "text-white/70" : "text-[#8b83a8]"}`}>{count.toLocaleString()}</span>
           </button>
         ))}
       </div>
@@ -278,12 +278,12 @@ function FilterDrawer({ value, onApply, onClose }: { value: Filters; onApply: (v
         <div className="flex items-center justify-between border-b border-border pb-3">
           <h2 id="connections-filter-title" className="text-sm font-semibold">Filters</h2>
           <div className="flex items-center gap-3">
-            <button type="button" onClick={clear} className="text-[10px] text-brand">Clear all</button>
+            <button type="button" onClick={clear} className="text-xs text-brand">Clear all</button>
             <button type="button" onClick={onClose} aria-label="Close filters" className="grid h-7 w-7 place-items-center rounded-full text-lg text-ink/50 hover:bg-page">×</button>
           </div>
         </div>
         <div>
-          <p className="mb-2 font-mono text-[9px] font-semibold tracking-[0.14em] text-ink/55">PROGRAM</p>
+          <p className="mb-2 font-mono text-xs font-semibold tracking-[0.14em] text-ink/55">PROGRAM</p>
           <div className="flex flex-wrap gap-1.5">{programs.map(program => (
             <button key={program} type="button" aria-pressed={draft.programs.includes(program)} onClick={() => toggleProgram(program)}>
               <Chip active={draft.programs.includes(program)}>{program}</Chip>
@@ -291,17 +291,17 @@ function FilterDrawer({ value, onApply, onClose }: { value: Filters; onApply: (v
           ))}</div>
         </div>
         <div>
-          <p className="mb-2 font-mono text-[9px] font-semibold tracking-[0.14em] text-ink/55">MESSAGING</p>
+          <p className="mb-2 font-mono text-xs font-semibold tracking-[0.14em] text-ink/55">MESSAGING</p>
           <div className="grid grid-cols-3 gap-1 rounded-xl bg-page p-1">
             {(["Any", "Can message", "DMs off"] as const).map(option => (
               <button key={option} type="button" aria-pressed={draft.messaging === option} onClick={() => setDraft(current => ({ ...current, messaging: option }))}
-                className={`rounded-lg px-2 py-2 text-[9px] transition-colors ${draft.messaging === option ? "bg-white font-medium text-brand shadow-sm" : "text-ink/55"}`}>
+                className={`rounded-lg px-2 py-2 text-xs transition-colors ${draft.messaging === option ? "bg-white font-medium text-brand shadow-sm" : "text-ink/55"}`}>
                 {option}
               </button>
             ))}
           </div>
         </div>
-        <div className="rounded-lg bg-[#f7f5fc] p-3 text-[9px] leading-4 text-ink/55">More filters, including sessions and how you met, will be available as additional connection history is added.</div>
+        <div className="rounded-lg bg-[#f7f5fc] p-3 text-xs leading-4 text-ink/55">More filters, including sessions and how you met, will be available as additional connection history is added.</div>
         <div className="flex gap-2 border-t border-border pt-3">
           <Button variant="ghost" onClick={onClose} className="flex-1">Cancel</Button>
           <Button onClick={() => onApply(draft)} className="flex-1">Show {connections.filter(connection => (!draft.programs.length || draft.programs.includes(connection.program)) && (draft.messaging === "Any" || (draft.messaging === "Can message" ? connection.dms : !connection.dms))).length} people</Button>
@@ -319,28 +319,28 @@ function SentList({ rows, setRows }: { rows: typeof sentInit; setRows: Dispatch<
     <Card className="py-9 text-center">
       <div className="mx-auto grid h-9 w-9 place-items-center rounded-full bg-[#f2edff] text-brand">✓</div>
       <b className="mt-2 block text-xs">No requests out yet</b>
-      <p className="mx-auto mt-1 max-w-xs text-[10px] leading-4 text-ink/55">Connecting works best while the session is still fresh in both your heads.</p>
+      <p className="mx-auto mt-1 max-w-xs text-xs leading-4 text-ink/55">Connecting works best while the session is still fresh in both your heads.</p>
       <Button variant="ghost" density="compact" className="mt-3">See who you met</Button>
     </Card>
   );
 
   return (
     <div className="space-y-2.5">
-      {undo && <p className="flex justify-between rounded-lg bg-[#f7f5fc] p-3 text-[10px]">Request to {undo.name} withdrawn.<button type="button" className="text-brand" onClick={() => { setRows([...rows, undo]); setUndo(null); }}>Undo</button></p>}
+      {undo && <p className="flex justify-between rounded-lg bg-[#f7f5fc] p-3 text-xs">Request to {undo.name} withdrawn.<button type="button" className="text-brand" onClick={() => { setRows([...rows, undo]); setUndo(null); }}>Undo</button></p>}
       {rows.map(row => (
         <Card key={row.name} className="p-3 sm:p-4">
           <div className="flex items-center gap-3">
             <Avatar name={row.name} size={34} />
             <div className="min-w-0 flex-1">
               <b className="text-xs font-semibold">{row.name}</b>
-              <p className="text-[9px] text-ink/55">{row.status}</p>
+              <p className="text-xs text-ink/55">{row.status}</p>
             </div>
             {row.status === "No response"
               ? <Button density="compact">Send again</Button>
               : <Button variant="ghost" density="compact" onClick={() => setConfirm(row.name)}>Withdraw</Button>}
           </div>
-          {row.note && <p className="ml-[46px] mt-2 rounded-lg bg-[#f7f5fc] px-3 py-2 text-[10px] leading-4 text-ink/70">“{row.note}”</p>}
-          {confirm === row.name && <div className="ml-[46px] mt-2 rounded-lg border border-border p-3 text-[9px] leading-4 text-ink/70">
+          {row.note && <p className="ml-[46px] mt-2 rounded-lg bg-[#f7f5fc] px-3 py-2 text-xs leading-4 text-ink/70">“{row.note}”</p>}
+          {confirm === row.name && <div className="ml-[46px] mt-2 rounded-lg border border-border p-3 text-xs leading-4 text-ink/70">
             <p>{row.name} is never told you sent this — or that you took it back. <b>You won’t be able to request again for 30 days.</b></p>
             <div className="mt-2 flex justify-end gap-2">
               <Button variant="ghost" density="compact" onClick={() => setConfirm(null)}>Keep it</Button>
@@ -349,7 +349,7 @@ function SentList({ rows, setRows }: { rows: typeof sentInit; setRows: Dispatch<
           </div>}
         </Card>
       ))}
-      <p className="text-[9px] text-ink/45">You’ll only hear back if someone accepts. Requests expire after 30 days.</p>
+      <p className="text-xs text-ink/45">You’ll only hear back if someone accepts. Requests expire after 30 days.</p>
     </div>
   );
 }
