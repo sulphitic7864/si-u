@@ -39,9 +39,12 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
           <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-ink/65">
             <span>San Francisco, CA</span><a href="https://si3.space" className="text-brand">si3.space</a><span>Self-Employed</span>
           </div>
-          <div className="mt-4 grid grid-cols-4 border-t border-border/70 pt-3 text-xs">
+          <div className="mt-4 grid grid-cols-2 gap-y-3 border-t border-border/70 pt-3 text-xs sm:grid-cols-4 sm:gap-y-0">
             {[["24", "Sessions"], ["41", "Connections"], ["6", "POAPs"], ["32", "Posts"]].map(([value, label]) => (
-              <div key={label} className="flex items-center gap-1.5 whitespace-nowrap"><b className="text-sm">{value}</b><span className="text-ink/60">{label}</span></div>
+              <div key={label} className="flex min-w-0 flex-col items-center gap-0.5 sm:flex-row sm:gap-1.5">
+                <b className="text-sm">{value}</b>
+                <span className="text-center text-ink/60">{label}</span>
+              </div>
             ))}
           </div>
         </div>
