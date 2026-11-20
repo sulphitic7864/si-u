@@ -11,9 +11,11 @@
   --color-siher: #C2358F;
   --color-wellbeing: #2AA198;
   --color-explorer: #7A6FA8;
-  --font-roobert: "Roobert Trial", "Roobert", var(--geist-sans), system-ui, sans-serif;
-  --font-geist: var(--geist-sans), system-ui, sans-serif;
-  --font-sans: var(--geist-sans), system-ui, sans-serif;
+}
+@theme inline {
+  --font-roobert: "Roobert Trial", "Roobert", var(--font-geist-sans), system-ui, sans-serif;
+  --font-geist: var(--font-geist-sans), system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 body { background: var(--color-page); color: var(--color-ink); }
 :where(a[href], button:not(:disabled), input[type="button"]:not(:disabled), input[type="submit"]:not(:disabled), input[type="reset"]:not(:disabled), summary, [role="button"]:not([aria-disabled="true"]):not([disabled]), [role="link"]:not([aria-disabled="true"]), [onclick]:not([aria-disabled="true"]):not([disabled])) { cursor: pointer; }
