@@ -1,7 +1,7 @@
 export type Program = "Grow3dge" | "Si Her" | "Well-Being" | "Explorer";
 export const programColor: Record<Program, string> = {
   Grow3dge: "text-grow3dge", "Si Her": "text-siher", "Well-Being": "text-wellbeing", Explorer: "text-explorer" };
-export const me = { name: "Julienne Cho", handle: "julienne.siu", tagline: "Emerging Tech Adoption Leader | Web3 Connector", members: 1156, communities: 44 };
+export const me = { name: "Kara Howard", handle: "kara.siu", tagline: "Emerging Tech Adoption Leader · Web3 Connector", communities: 44 };
 export const sessions = [
   { id: 1, title: "Leading Without Losing Yourself", host: "Zuza Zuber", program: "Si Her" as Program, live: true, attending: 33, date: "2026-04-01", time: "10:00 PM" },
   { id: 2, title: "How to Sell B2B in Web3", host: "Sandy Martinez", program: "Grow3dge" as Program, live: false, attending: 7, date: "2026-04-02", time: "10:00 PM" },
@@ -28,12 +28,13 @@ export const liveNowStreams = [
   { title: "Product Thinking in Web3", host: "Amber Cardera", handle: "amber.siher.eth", connectionsWatching: [], program: "Grow3dge" as Program, watching: 38, following: true, gradient: "linear-gradient(135deg, #324889, #6e80d0)" },
   { title: "First Steps into Digital Identity", host: "Lila Hernandez", handle: "lila.siher.eth", connectionsWatching: [], program: "Explorer" as Program, watching: 9, following: false, gradient: "linear-gradient(135deg, #9b6736, #d4ae6e)" },
 ];
+export const liveNowCount = liveNowStreams.length + 1;
 export const upcomingStreams = [
   { time: "10:00 PM", day: "in 36 min", title: "How to Sell B2B in Web3", host: "Sandy Martinez", program: "Grow3dge" as Program, attending: 7, following: true },
   { time: "11:30 PM", day: "in 2 hrs", title: "SI Her Community DAO Town Hall", host: "Zuza Zuber", program: "Si Her" as Program, attending: 44, following: true },
   { time: "7:00 AM", day: "tomorrow", title: "Morning Intention Setting with Rina", host: "Rina Patel", program: "Well-Being" as Program, attending: 28, following: true },
 ];
-export const connectionStats = { total: 1140, guides: 48, explorers: 1092, online: 12, live: 3 };
+export const connectionStats = { total: 1140, guides: 48, explorers: 1092, online: 12, live: liveNowCount };
 export const connections = [
   { name: "Zuza Zuber", handle: "zuza.siu", role: "Leadership Coach · Founder, Si Her", program: "Si Her" as Program, guide: true, live: true, presence: "live", dms: true },
   { name: "Amber Cardera", handle: "amber.siu", role: "Product-Led Growth · Grow3dge", program: "Grow3dge" as Program, guide: false, live: true, presence: "live", dms: true },

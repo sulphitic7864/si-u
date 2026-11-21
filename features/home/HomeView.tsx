@@ -2,15 +2,16 @@
 import { useState } from "react";
 import { Feed } from "./Feed";
 import { MomentsPlayer } from "./MomentsPlayer";
+import { me } from "@/shared/data/mock";
 export function HomeView() {
   const [tab, setTab] = useState<"feed" | "moments">("feed");
   return (<div className="font-geist">
     <div className="mb-5 flex flex-col gap-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="whitespace-nowrap text-xl font-semibold text-ink">Welcome back, <span className="text-brand">julienne.siu</span> <span aria-hidden="true">👋</span></h1>
-        <div aria-label="Connected identity julienne.siher.eth" className="flex items-center gap-1.5 rounded-full bg-[#eeeaf8] px-2.5 py-1 text-xs font-medium text-brand-deep">
+        <h1 className="whitespace-nowrap text-xl font-semibold text-ink">Welcome back, <span className="text-brand">{me.handle}</span> <span aria-hidden="true">👋</span></h1>
+        <div aria-label={`Connected identity ${me.handle}`} className="flex items-center gap-1.5 rounded-full bg-[#eeeaf8] px-2.5 py-1 text-xs font-medium text-brand-deep">
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          julienne.siher.eth
+          {me.handle}
         </div>
       </div>
       <div role="tablist" aria-label="Home view" className="flex items-center gap-1 self-start">

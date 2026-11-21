@@ -38,7 +38,7 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
             Crafting thoughtful digital experiences that feel alive. Passionate about human-centered design, interaction systems, and the spaces where technology meets meaning.
           </p>
           <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-ink/65">
-            <span>San Francisco, CA</span><a href="https://si3.space" className="text-brand">si3.space</a><span>Self-Employed</span>
+            <a href="https://si3.space" className="text-brand">si3.space</a><span>Self-Employed</span>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-y-3 border-t border-border/70 pt-3 text-xs sm:grid-cols-4 sm:gap-y-0">
             {[["24", "Sessions"], ["41", "Connections"], ["6", "POAPs"], ["32", "Posts"]].map(([value, label]) => (

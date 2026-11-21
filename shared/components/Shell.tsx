@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { me } from "@/shared/data/mock";
+import { connectionStats, me } from "@/shared/data/mock";
 import { useState } from "react";
 import { Avatar } from "./ui";
 import { CalendarWidget } from "./CalendarWidget";
@@ -56,7 +56,7 @@ function Navbar() {
           <HeaderActionIcon name="notifications" />
         </button>
           <button type="button" aria-label="Account menu" className="overflow-hidden rounded-xl transition-colors hover:ring-2 hover:ring-white/40">
-            <Avatar name={me.name} size={40} shape="rounded" src="/assets/Ava.png" />
+            <Avatar name={me.name} size={40} shape="rounded" />
         </button>
       </div>
     </header>);
@@ -77,7 +77,7 @@ function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () =
           <Image src="/assets/Maskgroup.png" alt="Abstract purple, orange, and teal wave banner" fill sizes="250px" className="object-cover" />
         </div>
         <div className="absolute -bottom-5 left-3 rounded-xl border-2 border-white/80 bg-white/20 p-1">
-          <Avatar name={me.name} size={44} shape="rounded" src="/assets/Ava.png" />
+          <Avatar name={me.name} size={44} shape="rounded" />
         </div>
       </div>
       <h2 className="text-lg font-extrabold uppercase leading-tight">{me.name}</h2>
@@ -90,7 +90,7 @@ function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () =
       <section className="mt-5 border-t border-white/15 pt-5 font-roobert">
         <h3 className="mb-2 text-xs font-semibold tracking-[0.16em] text-white/65">YOUR CONNECTIONS</h3>
         <Link href="/connections" className="flex items-center justify-between py-1.5 text-sm hover:text-white/80">
-          <span>Members</span><span>{me.members.toLocaleString()} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-xs">+7</span></span>
+          <span>Members</span><span>{connectionStats.total.toLocaleString()}</span>
         </Link>
         <Link href="/connections" className="flex items-center justify-between py-1.5 text-sm hover:text-white/80">
           <span>Communities</span><span>{me.communities} <span className="rounded-full bg-white/20 px-1.5 py-0.5 text-xs">+3</span></span>

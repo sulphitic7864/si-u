@@ -3,12 +3,12 @@ import { PostCard } from "@/shared/components/PostCard";
 import { RsvpButton } from "@/shared/components/RsvpModal";
 import { Avatar, Card } from "@/shared/components/ui";
 import { MediaGrid } from "./MediaGrid";
-import { posts } from "@/shared/data/mock";
+import { me, posts } from "@/shared/data/mock";
 export function Feed() {
   return (<div className="space-y-4">
     <Card className="p-3">
       <div className="flex items-center gap-3">
-        <Avatar name="Julienne Cho" size={40} shape="rounded" src="/assets/Ava.png" />
+        <Avatar name={me.name} size={40} shape="rounded" />
         <input aria-label="Create a post" placeholder="Share an update…" className="min-w-0 flex-1 rounded-xl border border-border bg-page/50 px-4 py-3 text-sm placeholder:text-ink/45 focus:border-brand focus:outline-none" />
       </div>
     </Card>
