@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Card, Button, ProgramTag } from "@/shared/components/ui";
 import { learnToday, learnTomorrow, replays, summaries, type LearnSession, type Program } from "@/shared/data/mock";
+import { addCalendarDays, formatShortDate } from "@/shared/utils/date";
 import { RsvpButton } from "@/shared/components/RsvpModal";
 
 const programs: Array<Program | "All"> = ["All", "Explorer", "Grow3dge", "Well-Being", "Si Her"];
@@ -58,7 +59,7 @@ function SessionCard({ session }: { session: LearnSession }) {
   );
 }
 
-function DateDivider({ children }: { children: string }) {
+function DateDivider({ children }: { children: ReactNode }) {
   return <div className="flex items-center gap-3"><h2 className="whitespace-nowrap font-mono text-xs tracking-[0.12em] text-ink/75 sm:uppercase">{children}</h2><span className="h-px flex-1 bg-border" /></div>;
 }
 
@@ -68,6 +69,8 @@ function SectionHeading({ title, action }: { title: string; action?: string }) {
 
 export function LearnView() {
   const [selectedProgram, setSelectedProgram] = useState<Program | "All">("All");
+  const today = new Date();
+  const tomorrow = addCalendarDays(today, 1);
   const visibleToday = learnToday.filter(session => selectedProgram === "All" || session.program === selectedProgram);
   const visibleTomorrow = learnTomorrow.filter(session => selectedProgram === "All" || session.program === selectedProgram);
 
@@ -112,12 +115,12 @@ export function LearnView() {
       </section>
 
       {visibleToday.length > 0 && <section className="space-y-4 sm:space-y-3">
-        <DateDivider>Today · Wed 15 Jan</DateDivider>
+        <DateDivider>Today · {formatShortDate(today)}</DateDivider>
         <div className="space-y-2.5 pt-3 sm:space-y-3 sm:pt-0">{visibleToday.map(session => <SessionCard key={session.title} session={session} />)}</div>
       </section>}
 
       {visibleTomorrow.length > 0 && <section className="space-y-4 sm:space-y-3">
-        <DateDivider>Tomorrow · Thu 16 Jan</DateDivider>
+        <DateDivider>Tomorrow · {formatShortDate(tomorrow)}</DateDivider>
         <div className="space-y-2.5 pt-3 sm:space-y-3 sm:pt-0">{visibleTomorrow.map(session => <SessionCard key={session.title} session={session} />)}</div>
       </section>}
 

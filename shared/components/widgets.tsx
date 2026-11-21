@@ -4,9 +4,9 @@ export const ProgressBar = ({ value, tone = "light" }: { value: number; tone?: "
   <div className={`h-1.5 rounded ${tone === "light" ? "bg-white/20" : "bg-brand/15"}`}><div style={{ width: `${value}%` }} className={`h-full rounded ${tone === "light" ? "bg-white" : "bg-brand"}`} /></div>;
 
 const earnedBadges = [
-  { name: "Earned badge 1", src: "/assets/badge1.png" },
-  { name: "Earned badge 2", src: "/assets/badge2.png" },
-  { name: "Earned badge 3", src: "/assets/badge3.png" },
+  { name: "Flag emblem badge", src: "/assets/badge1.png" },
+  { name: "Quill emblem badge", src: "/assets/badge2.png" },
+  { name: "Heart emblem badge", src: "/assets/badge3.png" },
 ] as const;
 
 export const BadgesWidget = ({ done = 3, total = 5, next = "Grow3dge Incubator" }: { done?: number; total?: number; next?: string }) =>

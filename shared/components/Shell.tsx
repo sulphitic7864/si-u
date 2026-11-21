@@ -15,9 +15,8 @@ const nav = [
   ["Streams", "/streams", "streams"],
   ["Learn", "/learn", "learn"],
 ] as const;
-const reserved = ["/connections", "/streams", "/learn", "/settings"];
 const isActive = (p: string, h: string) =>
-  h === "/" ? p === "/" : h === "/kara.siu" ? p !== "/" && !reserved.some(r => p.startsWith(r)) : p.startsWith(h);
+  h === "/" ? p === "/" : h === "/kara.siu" ? p === h : p.startsWith(h);
 
 function NavIcon({ name }: { name: (typeof nav)[number][2] }) {
   const paths = {
@@ -75,7 +74,7 @@ function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose?: () =
       </div>}
       <div className="relative mb-7">
         <div className="relative h-[86px] overflow-hidden rounded-xl">
-          <Image src="/assets/Maskgroup.png" alt="" fill sizes="250px" className="object-cover" />
+          <Image src="/assets/Maskgroup.png" alt="Abstract purple, orange, and teal wave banner" fill sizes="250px" className="object-cover" />
         </div>
         <div className="absolute -bottom-5 left-3 rounded-xl border-2 border-white/80 bg-white/20 p-1">
           <Avatar name={me.name} size={44} shape="rounded" src="/assets/Ava.png" />
@@ -156,7 +155,7 @@ function MobileBar() {
 }
 function BottomTabBar() {
   const p = usePathname();
-  const tabs = [nav[0], nav[2], nav[3], nav[4], nav[1]];
+  const tabs = nav;
   return (
     <nav className="bg-navbar fixed inset-x-0 bottom-0 z-20 flex justify-around py-2 text-xs lg:hidden">
       {tabs.map(([label, href, icon]) => {

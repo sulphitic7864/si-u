@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui";
 import { RsvpButton } from "@/shared/components/RsvpModal";
+import { formatShortDate } from "@/shared/utils/date";
 import type { Viewer } from "./types";
 
 /** Only co-attendees (shared >=1 completed session) may Connect or message. */
@@ -14,7 +15,7 @@ export function ProfileActions({ viewer }: { viewer: Viewer }) {
       {sent ? <span className="rounded-lg bg-brand/10 px-4 py-2 text-sm text-brand">Requested</span> : <Button onClick={() => setSent(true) /* Phase 2: POST connection, origin=same_session */}>Connect</Button>}
       <Button variant="ghost">Message</Button></div>);
   if (viewer === "guest") return <Link href="/signup?session=next" className="rounded-lg bg-brand-deep px-4 py-2 text-sm text-white">Attend</Link>;
-  return <RsvpButton title="Leading Without Losing Yourself" when="Thu 14 Aug · 6:00 PM PT" />; // non-attendee: no Connect
+  return <RsvpButton title="Leading Without Losing Yourself" when={`${formatShortDate(new Date())} · 6:00 PM PT`} />; // non-attendee: no Connect
 }
 
 export function GuideNudge() {

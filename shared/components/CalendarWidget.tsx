@@ -1,19 +1,13 @@
 "use client";
 import { useState } from "react";
 import { sessions } from "@/shared/data/mock";
+import { addCalendarDays as addDays } from "@/shared/utils/date";
 import { Button } from "./ui";
 import { RsvpButton } from "./RsvpModal";
 
 const weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
 const programs = ["All", "Grow3dge", "Well-Being", "Explorer", "Si Her"] as const;
 type ProgramFilter = typeof programs[number];
-const initialDate = new Date(2026, 3, 1);
-
-function addDays(date: Date, amount: number) {
-  const result = new Date(date);
-  result.setDate(result.getDate() + amount);
-  return result;
-}
 
 function startOfWeek(date: Date) {
   return addDays(date, -date.getDay());
@@ -38,8 +32,8 @@ function ordinal(day: number) {
   }
 }
 
-function formatSelectedDate(date: Date) {
-  if (isSameDay(date, initialDate)) return `Today, ${ordinal(date.getDate())} ${date.toLocaleDateString("en-US", { month: "long", year: "numeric" })}`;
+function formatSelectedDate(date: Date, today: Date) {
+  if (isSameDay(date, today)) return `Today, ${ordinal(date.getDate())} ${date.toLocaleDateString("en-US", { month: "long", year: "numeric" })}`;
   return date.toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
 }
 
@@ -77,8 +71,9 @@ function CalendarControls({ onPrevious, onNext, previousLabel, nextLabel }: {
 }
 
 export function CalendarWidget() {
-  const [selectedDate, setSelectedDate] = useState(initialDate);
-  const [month, setMonth] = useState(initialDate);
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(() => new Date());
+  const [month, setMonth] = useState(() => new Date());
   const [expanded, setExpanded] = useState(false);
   const [program, setProgram] = useState<ProgramFilter>("All");
   const week = Array.from({ length: 7 }, (_, index) => addDays(startOfWeek(selectedDate), index));
@@ -101,7 +96,7 @@ export function CalendarWidget() {
     <div className="overflow-hidden rounded-2xl border border-border bg-white">
       <div className="p-3">
         <div className="mb-3 flex items-center justify-between gap-1">
-          <h2 className="whitespace-nowrap text-xs font-semibold">{formatSelectedDate(selectedDate)}</h2>
+          <h2 className="whitespace-nowrap text-xs font-semibold">{formatSelectedDate(selectedDate, today)}</h2>
           <div className="flex items-center gap-1">
             <button type="button" aria-label="Expand calendar" onClick={() => { setMonth(selectedDate); setExpanded(true); }} className="grid h-6 w-6 place-items-center rounded text-explorer hover:bg-page">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7" /></svg>
@@ -173,7 +168,7 @@ export function CalendarWidget() {
         <section className="min-w-0 p-4 sm:p-6">
           <button type="button" onClick={() => setExpanded(false)} aria-label="Close calendar" className="absolute right-3 top-3 text-lg leading-none text-ink/55 hover:text-ink">×</button>
           <h2 className="mb-4 flex items-center gap-2 pr-7 text-sm font-semibold">
-            {isSameDay(selectedDate, initialDate) ? `Today, ${selectedDate.toLocaleDateString("en-US", { month: "long" })} ${ordinal(selectedDate.getDate())}` : selectedDate.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
+            {isSameDay(selectedDate, today) ? `Today, ${selectedDate.toLocaleDateString("en-US", { month: "long" })} ${ordinal(selectedDate.getDate())}` : selectedDate.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
             <span className="rounded bg-rose-50 px-1.5 py-0.5 text-xs font-semibold text-rose-500">{liveCount} LIVE</span>
           </h2>
           <div className="space-y-2">

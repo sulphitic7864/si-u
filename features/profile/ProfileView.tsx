@@ -4,6 +4,7 @@ import { posts, profileSessions } from "@/shared/data/mock";
 import { ProfileActions, GuideNudge } from "./ProfileActions";
 import { Card, Button } from "@/shared/components/ui";
 import { PostCard } from "@/shared/components/PostCard";
+import { formatShortDate } from "@/shared/utils/date";
 import type { Viewer } from "./types";
 
 const tabs = [
@@ -54,7 +55,7 @@ export function ProfileView({ handle, tab, viewer = "owner" }: { handle: string;
         <div className="min-w-0">
           <p className="font-mono text-xs tracking-[0.16em] text-white/75">{viewer === "owner" ? "YOUR NEXT SESSION" : "NEXT SESSION"}</p>
           <b className="block truncate text-sm">Leading Without Losing Yourself</b>
-          <p className="text-xs text-white/75">Thu 14 Aug · 6:00 PM PT · 42 attending</p>
+          <p className="text-xs text-white/75">{formatShortDate(new Date())} · 6:00 PM PT · 42 attending</p>
         </div>
         {viewer === "owner" && <Button variant="ghost" className="shrink-0 border-0">Manage session</Button>}
       </section>

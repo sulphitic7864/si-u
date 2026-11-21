@@ -1,4 +1,11 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Roobert Trial";
+  src: url("/assets/RoobertTRIAL.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 /* TODO: replace with exact values from Figma Dev Mode */
 @theme {
   --color-page: #F3F0FC;
